@@ -1,8 +1,9 @@
 
-# Learn Python in 5 minutes
+# Learn Python
 
 * Why Learn Python?
   * Readability
+  * Flexibility
   * Utility
 * Installation
   * Windows
@@ -13,9 +14,4 @@
   * `dir()` and `help()`
 * Modules
   * `import`
-* Lists
-* Dictionaries
-
-
-
 
