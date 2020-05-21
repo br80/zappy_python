@@ -2,9 +2,9 @@
 
 Data rules the world.
 
-It's everywhere.
+It's everywhere, from finance to game design.
 
-Master data, with Python.
+Let's master data together, with Python.
 
 ## CSV
 
