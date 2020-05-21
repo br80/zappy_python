@@ -1,34 +1,17 @@
-filename = "animal_crossing_items.tsv"
-filename = "animal_crossing_items.csv"
-
-f = open(filename, "r")
-for line in f.readlines():
-  if len(line.split("\t")) != 16:
-    print(len(line.split("\t")))
-    print(line)
-
-
-
-
-
-filename = "animal_crossing_items.csv"
-
 import csv
+filename = "items.csv"
+
+category_prices = {}
+
+with open(filename, newline='') as csv_file:
+    file_reader = csv.reader(csv_file)
+    for row in file_reader:
+        print("-----")
+        print(row)
 
 
 
-
-
-def return_bell_profit(row):
-    if row[6] != "bells" or row[8] != "bells":
-        return 1000
-    if not (row[5].isnumeric() and row[7].isnumeric()):
-        return 1000
-    return int(row[7]) / int(row[5])
-
-
-min_profit = 1000
-min_row = None
+filename = "items.csv"
 
 category_prices = {}
 
