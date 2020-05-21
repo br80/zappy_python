@@ -20,4 +20,4 @@ Here are some great resources for free datasets:
 * [data.gov](https://catalog.data.gov/dataset)
 * [GitHub](https://github.com/datasets)
 
-Let's pick this Animal Crossing CSV from [Kaggle](https://www.kaggle.com/jessemostipak/animal-crossing)
+Let's pick this [Animal Crossing item CSV](items.csv) from [Kaggle](https://www.kaggle.com/jessemostipak/animal-crossing)
