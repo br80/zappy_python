@@ -22,4 +22,4 @@ Here are some great resources for free, open datasets:
 
 Let's grab this [Animal Crossing item CSV](items.csv) from [Kaggle](https://www.kaggle.com/jessemostipak/animal-crossing)
 
-![Animal Crossing Items](/img/animal_crossing_spreadsheet.jpg)
+![Animal Crossing Items](img/animal_crossing_spreadsheet.jpg)
