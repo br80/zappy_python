@@ -6,7 +6,7 @@ It's everywhere.
 
 Master data, with Python.
 
-### CSV
+## CSV
 
 CSV stands for "Comma-separated values".
 
@@ -28,7 +28,7 @@ Open it up in a spreadsheet program like Excel and it will look something like t
 
 We've got the data, now let's parse it with Python.
 
-### Python CSV
+## Python CSV
 
 Let's start by importing the `csv` module. This will give us many useful tools to read and write CSV files. Take a look at the [official docs](https://docs.python.org/3/library/csv.html).
 
@@ -46,7 +46,7 @@ with open(filename, newline='') as csv_file:
 
 This will loop through each row and print it in a list. Simple but powerful!
 
-### Analyzing Data
+## Analyzing Data
 
 Let's say we want to find which item category has the most expensive items. We can refactor our loop to store data from the right columns like this:
 
@@ -109,7 +109,7 @@ Seashells: 8 items, 420 avg. bells
 
 Nifty!
 
-### Writing data
+## Writing data
 
 Not only can we read data but we can write data too. Python has visualization libraries, like [Pandas](https://pandas.pydata.org/) and [Bokeh](https://docs.bokeh.org/en/latest/index.html), or you can just write back to CSV to open in a spreadsheet.
 
