@@ -47,8 +47,23 @@ with open(filename, newline='') as csv_file:
                 else:
                     category_prices[category] = [sell_value]
 
-
 for category in category_prices:
     prices = category_prices[category]
-    print(f"{category}: {len(prices)} items, {sum(prices)/len(prices)} avg")
+    avg_bells = sum(prices) // len(prices)
+    print(f"{category}: {len(prices)} items, {avg_bells} avg. bells")
+
+
+
+with open('animal_crossing_bell_avg.csv', 'w', newline='') as csvfile:
+    fieldnames = ['Item Type', 'Buyable Items', 'Avg. Price - Bells', 'Most Expensive', 'Cheapest']
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+    writer.writeheader()
+    for category in category_prices:
+        prices = category_prices[category]
+        writer.writerow({'Item Type': category,
+                         'Buyable Items': len(prices),
+                         'Avg. Price - Bells': sum(prices) // len(prices),
+                         'Most Expensive': max(prices),
+                         'Cheapest': min(prices)})
+
 
