@@ -127,3 +127,7 @@ with open('animal_crossing_bell_avg.csv', 'w', newline='') as csvfile:
                          'Cheapest': min(prices)})
 ```
 
+Open up the resulting CSV will give you this:
+
+![Animal Crossing Items](img/animal_crossing_bell_avg.jpg)
+
