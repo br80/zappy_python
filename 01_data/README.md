@@ -16,7 +16,7 @@ Let's find some interesting CSV files.
 
 Here are some great resources for free datasets:
 
-* (Kaggle)[https://www.kaggle.com/datasets]
+* [Kaggle](https://www.kaggle.com/datasets)
 * (data.gov)[https://catalog.data.gov/dataset]
 * (GitHub)[https://github.com/datasets]
 
