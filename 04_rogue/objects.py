@@ -76,10 +76,13 @@ class Weapon(GameObject):
             for enemy in game.enemies:
                 if enemy.row == self.row and enemy.col == self.col:
                     enemy.die()
-            game.grid[self.row][self.col] = self
-            self.frame_to_destroy = game.frame + lifetime
-            game.draw_grid()
-            Weapon(name, self.row, self.col, facing, lifetime, size-1, game)
+            if game.grid[self.row][self.col] != " " and game.grid[self.row][self.col].type == "BARRIER":
+                self.game.weapons.remove(self)
+            else:
+                game.grid[self.row][self.col] = self
+                self.frame_to_destroy = game.frame + lifetime
+                game.draw_grid()
+                Weapon(name, self.row, self.col, facing, lifetime, size-1, game)
 
     def set_row_col(self, player_row, player_col, facing):
         self.row = player_row
