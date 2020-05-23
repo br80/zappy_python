@@ -7,9 +7,6 @@ import csv
 from objects import Barrier, Weapon, Enemy, Player
 
 def clear_screen():
-    '''
-    Clears the game terminal
-    '''
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
