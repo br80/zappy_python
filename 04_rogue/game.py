@@ -24,6 +24,8 @@ class Game:
         self.weapons = []
         self.enemies = []
 
+        self.win = False
+
         self.load_world("data/" + "maze_map.csv")
 
     def load_world(self, world_file=None):
@@ -120,7 +122,11 @@ class Game:
             wait_time = max([0, frame_time - (time.time() - start_time)])
             time.sleep(frame_time)
 
-        print("Game Over!")
+        if self.win:
+            print("You are an awesome treasure hunter!")
+        else:
+            print("Game Over")
+
         kb.set_normal_term()
 
 
