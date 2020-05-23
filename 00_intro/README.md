@@ -30,7 +30,9 @@
 * Modules
   * `import`
   * `math, random`
-
+* Printing
+  * `print()`
+  * f-strings `f"{x} - {y}"`
 
 
 
