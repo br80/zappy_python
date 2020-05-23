@@ -81,11 +81,11 @@ class Game:
 
     def draw_grid(self):
         clear_screen()
-        print("# " * (self.num_cols + 1))
+        print("# " * (self.num_cols + 2))
         for row in self.grid:
             char_row = [str(c)[0] for c in row]
-            print(f"#{' '.join(char_row)}#")
-        print("# " * (self.num_cols + 1))
+            print(f"# {' '.join(char_row)} #")
+        print("# " * (self.num_cols + 2))
         print(self.player.cooldown)
 
 
