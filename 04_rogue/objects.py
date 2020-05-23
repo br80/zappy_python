@@ -116,6 +116,7 @@ class Player(GameObject):
         self.cooldown = 0
         self.facing = "east"
         self.weapon_size = 2
+        self.game.player = self
     def process_command(self, c):
         directions = {"w": "north", "a": "west", "s": "south", "d": "east"}
         if c in directions:

@@ -2,6 +2,7 @@ import kbhit # https://simondlevy.academic.wlu.edu/files/software/kbhit.py
 
 import os
 import time
+import csv
 
 from objects import Barrier, Weapon, Enemy, Player
 
@@ -13,23 +14,58 @@ def clear_screen():
 
 
 class Game:
-    def __init__(self, num_rows, num_cols):
+    def __init__(self):
         # Init grid
-        self.num_rows = num_rows
-        self.num_cols = num_cols
-        self.grid = []
-        for i in range(self.num_rows):
-            self.grid.append([" "] * self.num_cols)
 
         self.framerate = 60
         self.frame = 0
         self.running = True
 
-        self.player = Player("Br80", 0, 0, self)
         self.cooldown = 0
         self.weapons = []
-
         self.enemies = []
+
+        self.load_world("maze_map.csv")
+
+    def load_world(self, world_file=None):
+        if world_file is None:
+            self.load_default_world()
+        else:
+            with open(world_file, newline='') as csv_file:
+                self.num_rows = 0
+                self.num_cols = None
+                self.grid = []
+                file_reader = csv.reader(csv_file)
+                for row in file_reader:
+                    if self.num_cols is None:
+                        self.num_cols = len(row)
+                    self.grid.append([" "] * self.num_cols)
+                    col_i = 0
+                    for col in row:
+                        self.create(col, self.num_rows, col_i)
+                        col_i += 1
+                    self.num_rows += 1
+
+    def create(self, key, row, col):
+        if key == "X":
+            Enemy("X", row, col, 200, self)
+        elif key == "Y":
+            Enemy("Y", row, col, 400, self)
+        elif key == "#":
+            Barrier(row, col, self)
+        elif key == "P":
+            Player("P", row, col, self)
+
+
+    def load_default_world(self):
+        self.num_rows = 20
+        self.num_cols = 20
+        self.grid = []
+        for i in range(self.num_rows):
+            self.grid.append([" "] * self.num_cols)
+
+        Player("Br80", 0, 0, self)
+
         Enemy("X", 5, 0, 100, self)
         Enemy("X", 5, 1, 400, self)
         Enemy("Y", 6, 0, 400, self)
@@ -44,9 +80,7 @@ class Game:
         Barrier(8, 2, self)
         Barrier(9, 2, self)
 
-
         Barrier(0, 3, self)
-
 
     def draw_grid(self):
         clear_screen()
@@ -64,8 +98,6 @@ class Game:
         frame_time = 1 / self.framerate
 
         kb = kbhit.KBHit()
-
-        print('Move with WASD')
 
         game_start = time.time()
 
@@ -95,7 +127,7 @@ class Game:
 
 
 
-g = Game(20, 20)
+g = Game()
 g.draw_grid()
 g.run()
 
