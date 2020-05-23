@@ -77,7 +77,8 @@ class Weapon(GameObject):
                 if enemy.row == self.row and enemy.col == self.col:
                     enemy.die()
             if game.grid[self.row][self.col] != " " and game.grid[self.row][self.col].type == "BARRIER":
-                self.game.weapons.remove(self)
+                if self in self.game.weapons:
+                   self.game.weapons.remove(self)
             else:
                 game.grid[self.row][self.col] = self
                 self.frame_to_destroy = game.frame + lifetime
@@ -169,7 +170,8 @@ class Enemy(GameObject):
             self.die()
             return False
     def die(self):
-        self.game.enemies.remove(self)
+        if self in self.game.enemies:
+            self.game.enemies.remove(self)
         occupant = self.game.grid[self.row][self.col]
         if occupant == self:
             occupant = " "
