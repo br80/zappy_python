@@ -7,6 +7,7 @@ import csv
 from barrier import Barrier
 from enemy import Enemy
 from player import Player
+from treasure import Treasure
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -23,6 +24,7 @@ class Game:
         self.cooldown = 0
         self.weapons = []
         self.enemies = []
+        self.treasures = []
 
         self.win = False
 
@@ -56,6 +58,8 @@ class Game:
             Barrier(row, col, self)
         elif key == "P":
             Player("P", row, col, self)
+        elif key == "T":
+            Treasure(row, col, self)
 
 
     def load_default_world(self):
@@ -73,6 +77,7 @@ class Game:
         Enemy("Y", 6, 1, 400, self)
         Enemy("X", 7, 0, 400, self)
 
+        Treasure(7, 1, self)
 
         Barrier(4, 2, self)
         Barrier(5, 2, self)
@@ -91,6 +96,7 @@ class Game:
             print(f"# {' '.join(char_row)} #")
         print("# " * (self.num_cols + 2))
         print(self.player.cooldown)
+        print(f"Gold: {self.player.gold}")
 
 
     def run(self):

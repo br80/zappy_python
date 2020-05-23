@@ -13,7 +13,7 @@ class Weapon(GameObject):
             for enemy in game.enemies:
                 if enemy.row == self.row and enemy.col == self.col:
                     enemy.die()
-            if game.grid[self.row][self.col] != " " and game.grid[self.row][self.col].type == "BARRIER":
+            if game.grid[self.row][self.col] != " " and game.grid[self.row][self.col].type in ["BARRIER", "TREASURE"]:
                 if self in self.game.weapons:
                    self.game.weapons.remove(self)
             else:

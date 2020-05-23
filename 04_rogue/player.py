@@ -11,6 +11,7 @@ class Player(GameObject):
         self.cooldown = 0
         self.facing = "east"
         self.weapon_size = 2
+        self.gold = 0
         self.game.player = self
     def process_command(self, c):
         directions = {"w": "north", "a": "west", "s": "south", "d": "east"}
@@ -20,11 +21,21 @@ class Player(GameObject):
         elif c == "p":
             self.attack()
     def object_collision(self, collision_object):
-        self.die()
-        return False
+        if collision_object.type == "TREASURE":
+            self.gold += collision_object.value
+            collision_object.die()
+            return True
+        else:
+            self.die()
+            return False
     def die(self):
         print("You have died.")
         self.game.running = False
     def attack(self):
         w = Weapon("+", self.row, self.col, self.facing, self.attack_speed, self.weapon_size, self.game)
         self.cooldown = self.attack_speed+1  # One frame longer than weapon
+    def collect_treasure(self, item):
+        if item.type == "TREASURE":
+            self.gold += item.value
+
+
