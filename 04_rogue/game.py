@@ -22,7 +22,7 @@ class Game:
         self.weapons = []
         self.enemies = []
 
-        self.load_world("maze_map.csv")
+        self.load_world("data/" + "maze_map.csv")
 
     def load_world(self, world_file=None):
         if world_file is None:
