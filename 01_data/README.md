@@ -2,7 +2,7 @@
 
 Data rules the world.
 
-It's everywhere, from finance to game design.
+Data is crucial in all industries ranging from finance to medicine to game design.
 
 Let's master data together, with Python.
 
