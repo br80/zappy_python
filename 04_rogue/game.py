@@ -5,9 +5,12 @@ import time
 import csv
 
 from barrier import Barrier
-from enemy import Enemy
+
 from player import Player
 from treasure import Treasure
+
+from snake import Snake
+from goblin import Goblin
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -50,10 +53,10 @@ class Game:
                     self.num_rows += 1
 
     def create(self, key, row, col):
-        if key == "X":
-            Enemy("X", row, col, 200, self)
-        elif key == "Y":
-            Enemy("Y", row, col, 400, self)
+        if key == "G":
+            Goblin(row, col, self)
+        elif key == "S":
+            Snake(row, col, self)
         elif key == "#":
             Barrier(row, col, self)
         elif key == "P":
@@ -71,11 +74,18 @@ class Game:
 
         Player("Br80", 0, 0, self)
 
-        Enemy("X", 5, 0, 100, self)
-        Enemy("X", 5, 1, 400, self)
-        Enemy("Y", 6, 0, 400, self)
-        Enemy("Y", 6, 1, 400, self)
-        Enemy("X", 7, 0, 400, self)
+        Goblin(5, 0, self)
+        Goblin(5, 1, self)
+        Goblin(7, 0, self)
+        Snake(6, 0, self)
+        Snake(6, 1, self)
+
+
+        Enemy("X", 5, 0, 100, 0.8, self)
+        Enemy("X", 5, 1, 400, 0.8, self)
+        Enemy("X", 7, 0, 400, 0.8, self)
+        Enemy("Y", 6, 0, 400, 0.2, self)
+        Enemy("Y", 6, 1, 400, 0.2, self)
 
         Treasure(7, 1, self)
 
@@ -98,9 +108,12 @@ class Game:
         print(f"Gold: {self.player.gold}")
         print(self.player.cooldown)
 
+    def game_over(self):
+        self.running = False
+
     def do_win(self):
         self.win = True
-        self.running = False
+        self.game_over()
 
 
     def run(self):

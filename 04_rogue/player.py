@@ -13,13 +13,15 @@ class Player(GameObject):
         self.weapon_size = 2
         self.gold = 0
         self.game.player = self
+
     def process_command(self, c):
         directions = {"w": "north", "a": "west", "s": "south", "d": "east"}
         if c in directions:
             self.move(directions[c])
             self.facing = directions[c]
-        elif c == "p":
+        elif c == "\n":  # Enter/Newline key
             self.attack()
+
     def object_collision(self, collision_object):
         if collision_object.type == "TREASURE":
             self.gold += collision_object.value
@@ -28,12 +30,15 @@ class Player(GameObject):
         else:
             self.die()
             return False
+
     def die(self):
         print("You have died.")
-        self.game.running = False
+        self.game.game_over()
+
     def attack(self):
         w = Weapon("+", self.row, self.col, self.facing, self.attack_speed, self.weapon_size, self.game)
         self.cooldown = self.attack_speed+1  # One frame longer than weapon
+
     def collect_treasure(self, item):
         if item.type == "TREASURE":
             self.gold += item.value

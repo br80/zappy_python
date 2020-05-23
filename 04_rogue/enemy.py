@@ -5,19 +5,31 @@ from object import GameObject
 
 
 class Enemy(GameObject):
-    def __init__(self, name, row, col, speed, game):
+    def __init__(self, name, row, col, speed, wait_time, game):
         super().__init__(name, row, col, game)
         self.game.enemies.append(self)
         self.type = "ENEMY"
-        self.speed = self.game.framerate * 100 / speed
+        self.speed = self.game.framerate * 100 / speed   # 100 = 1 second
         self.game.grid[row][col] = self
-        self.frame_to_act = int(1 * self.speed)
+        self.wait_time = int(wait_time * self.game.framerate)  # Wait half second
+        self.frame_to_act = self.wait_time
+        self.is_waiting = True
+
     def act(self, frame):
         if frame >= self.frame_to_act:
-            self.do_action()
-            self.frame_to_act += int(1 * self.speed)
+            # Alternate between waiting and action
+            if self.is_waiting:
+                self.do_action()
+                self.is_waiting = False
+            else:
+                self.do_wait()
+                self.is_waiting = True
     def do_action(self):
           self.random_move()
+          self.frame_to_act += int(1 * self.speed)
+    def do_wait(self):
+          self.frame_to_act += self.wait_time
+
     def valid_moves(self):
         directions = []
         if self.row > 0:
@@ -37,6 +49,7 @@ class Enemy(GameObject):
             if object_e == " " or object_e.type == "PLAYER":
                 directions.append("east")
         return directions
+
     def random_move(self):
         move_choices = ["north", "south", "west", "east"]
         # Try again if the move is unsuccessful
@@ -45,6 +58,7 @@ class Enemy(GameObject):
         if len(choices) > 0:
             self.move(random.choice(choices))
         self.frame_to_act += self.speed
+
     def object_collision(self, collision_object):
         if collision_object.type == "PLAYER":
             collision_object.die()
@@ -54,6 +68,7 @@ class Enemy(GameObject):
         else:
             self.die()
             return False
+
     def die(self):
         if self in self.game.enemies:
             self.game.enemies.remove(self)
