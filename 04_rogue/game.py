@@ -95,8 +95,12 @@ class Game:
             char_row = [str(c)[0] for c in row]
             print(f"# {' '.join(char_row)} #")
         print("# " * (self.num_cols + 2))
-        print(self.player.cooldown)
         print(f"Gold: {self.player.gold}")
+        print(self.player.cooldown)
+
+    def do_win(self):
+        self.win = True
+        self.running = False
 
 
     def run(self):
@@ -129,6 +133,7 @@ class Game:
             time.sleep(frame_time)
 
         if self.win:
+            print("You win!")
             print("You are an awesome treasure hunter!")
         else:
             print("Game Over")

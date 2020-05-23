@@ -14,3 +14,5 @@ class Treasure(GameObject):
         self.game.grid[self.row][self.col] = " "
         self.game.treasures.remove(self)
         self.game.draw_grid()
+        if len(self.game.treasures) == 0:
+            self.game.do_win()
