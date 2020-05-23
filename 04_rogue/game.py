@@ -4,7 +4,9 @@ import os
 import time
 import csv
 
-from objects import Barrier, Weapon, Enemy, Player
+from barrier import Barrier
+from enemy import Enemy
+from player import Player
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
