@@ -6,11 +6,19 @@
 fruits = []
 # []
 
+# Add to the end of the list
 fruits.append("apple")
 # ['apple']
 
 fruits.append("cherry")
 # ['apple', 'cherry']
+
+fruits.append("apple")
+# ['apple', 'cherry', 'apple']
+
+fruits.remove("apple")
+# ['cherry', 'apple']
+
 
 # Create a full list
 fruits = ["apple", "banana", "cherry", "eggplant", "fig", "grape"]
