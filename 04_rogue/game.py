@@ -20,7 +20,7 @@ class Game:
     def __init__(self):
         # Init grid
 
-        self.framerate = 60
+        self.framerate = 24
         self.frame = 0
         self.running = True
 
@@ -98,7 +98,7 @@ class Game:
 
         Barrier(0, 3, self)
 
-    def draw_grid(self):
+    def refresh_screen(self):
         clear_screen()
         print("# " * (self.num_cols + 2))
         for row in self.grid:
@@ -126,7 +126,7 @@ class Game:
         game_start = time.time()
 
         while self.running:
-            # self.draw_grid()
+            # self.refresh_screen()
             self.frame += 1
             start_time = time.time()
             if self.player.cooldown > 0:
@@ -157,7 +157,7 @@ class Game:
 
 
 g = Game()
-g.draw_grid()
+g.refresh_screen()
 g.run()
 
 

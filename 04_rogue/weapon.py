@@ -19,7 +19,7 @@ class Weapon(GameObject):
             else:
                 game.grid[self.row][self.col] = self
                 self.frame_to_destroy = game.frame + lifetime
-                game.draw_grid()
+                game.refresh_screen()
                 Weapon(name, self.row, self.col, facing, lifetime, size-1, game)
 
     def set_row_col(self, player_row, player_col, facing):
@@ -42,7 +42,7 @@ class Weapon(GameObject):
     def die(self):
         self.game.grid[self.row][self.col] = " "
         self.game.weapons.remove(self)
-        self.game.draw_grid()
+        self.game.refresh_screen()
 
 
 
