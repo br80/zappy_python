@@ -36,7 +36,7 @@ class Player(GameObject):
         self.game.game_over()
 
     def attack(self):
-        w = Weapon("+", self.row, self.col, self.facing, self.attack_speed, self.weapon_size, self.game)
+        w = Weapon("*", self.row, self.col, self.facing, self.attack_speed, self.weapon_size, self.game)
         self.cooldown = self.attack_speed+1  # One frame longer than weapon
 
     def collect_treasure(self, item):

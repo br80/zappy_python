@@ -20,14 +20,21 @@ class Game:
     def __init__(self):
         # Init grid
 
-        self.framerate = 24
+        self.framerate = 100
         self.frame = 0
         self.running = True
+
+        self.debug_prints = 0
+        self.debug_fps = 0
+        self.debug_last_frame_second = 0
+        self.frame_at_last_second = 0
 
         self.cooldown = 0
         self.weapons = []
         self.enemies = []
         self.treasures = []
+
+        self.print_this_frame = True
 
         self.win = False
 
@@ -99,6 +106,9 @@ class Game:
         Barrier(0, 3, self)
 
     def draw_screen(self):
+        self.print_this_frame = True
+
+    def print_screen(self):
         clear_screen()
         print("# " * (self.num_cols + 2))
         for row in self.grid:
@@ -107,6 +117,15 @@ class Game:
         print("# " * (self.num_cols + 2))
         print(f"Gold: {self.player.gold}")
         print(self.player.cooldown)
+
+        self.debug_prints += 1
+        print(f"{self.debug_prints} prints")
+        if int(time.time()) > self.debug_last_frame_second:
+            self.debug_last_frame_second = int(time.time())
+            self.debug_fps = self.frame // self.debug_last_frame_second
+            self.debug_fps = self.frame - self.frame_at_last_second
+            self.frame_at_last_second = self.frame
+        print(f"FPS: {self.debug_fps}")
 
     def game_over(self):
         self.running = False
@@ -126,7 +145,14 @@ class Game:
         game_start = time.time()
 
         while self.running:
-            # self.draw_screen()
+
+            # Print is expensive.
+            # Only print if there have been
+            # visual updates.
+            if self.print_this_frame:
+                self.print_screen()
+                self.print_this_frame = False
+
             self.frame += 1
             start_time = time.time()
             if self.player.cooldown > 0:
@@ -143,7 +169,7 @@ class Game:
             for weapon in self.weapons:
                 weapon.act(self.frame)
             wait_time = max([0, frame_time - (time.time() - start_time)])
-            time.sleep(frame_time)
+            time.sleep(wait_time)
 
         if self.win:
             print("You win!")
