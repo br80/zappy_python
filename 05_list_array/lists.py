@@ -39,19 +39,24 @@ fruits[5]  # The sixth item, index 5
 # 'grape'
 
 
+# Assign items by index
+fruits[0] = "apricot"
+# ['apricot', 'banana', 'cherry', 'eggplant', 'fig', 'grape']
+
+
 # Insert 'blueberry' at index 1
 fruits.insert(1, "blueberry")
-# ['apple', 'blueberry', 'banana', 'cherry', 'eggplant', 'fig', 'grape']
+# ['apricot', 'blueberry', 'banana', 'cherry', 'eggplant', 'fig', 'grape']
 
 # Pop out the value at index 2 ('banana')
 fruits.pop(2)
-# ['apple', 'blueberry', 'cherry', 'eggplant', 'fig', 'grape']
+# ['apricot', 'blueberry', 'cherry', 'eggplant', 'fig', 'grape']
 
 
 # Print each item in the list
 for fruit in fruits:
     print(fruit)
-# apple
+# apricot
 # blueberry
 # cherry
 # grape
@@ -80,7 +85,7 @@ for i in range(len(fruits)):
 # Print the index of each item in a list, and its value
 for i in range(len(fruits)):
     print(f"{i} - {fruits[i]}")
-# 0 - apple
+# 0 - apricot
 # 1 - blueberry
 # 2 - cherry
 # 3 - eggplant

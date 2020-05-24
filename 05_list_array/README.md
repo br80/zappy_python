@@ -51,6 +51,9 @@ len(fruits)
 Each item in a list can be accessed by its index. The index of an item is it's position, starting from 0.
 
 ```python
+fruits
+# ['apple', 'banana', 'cherry', 'eggplant", 'fig', 'grape']
+
 fruits[0]  # The first item, index 0
 # 'apple'
 
@@ -70,12 +73,18 @@ fruits[5]  # The sixth item, index 5
 # 'grape'
 ```
 
+You can reassign an item with its index too.
+```python
+fruits[0] = "apricot"
+# ['apricot', 'banana', 'cherry', 'eggplant', 'fig', 'grape']
+```
+
 
 Insert an item at a given index with `insert()`
 
 ```python
 fruits.insert(1, "blueberry")  # Insert 'blueberry' at index 1
-# ['apple', 'blueberry', 'banana', 'cherry', 'eggplant', 'fig', 'grape']
+# ['apricot', 'blueberry', 'banana', 'cherry', 'eggplant', 'fig', 'grape']
 ```
 
 Pop out the item at the given index with `pop()`
@@ -83,7 +92,7 @@ Pop out the item at the given index with `pop()`
 ```python
 fruits.pop(2)  # Pop out the value at index 2
 # 'banana'
-# ['apple', 'blueberry', 'cherry', 'grape', 'eggplant', 'fig']
+# ['apricot', 'blueberry', 'cherry', 'grape', 'eggplant', 'fig']
 ```
 
 
@@ -94,8 +103,8 @@ Use `for` to loop through the list and perform an action on each item.
 ```python
 for fruit in fruits:
     print(fruit)
-# apple
-# banana
+# apricot
+# blueberry
 # cherry
 # eggplant
 # fig
@@ -105,17 +114,23 @@ for fruit in fruits:
 
 ### Looping with an index
 
-Use `range()` to get a range of indices starting from 0.
+The `range()` is helpful for looping through lists with indexes.
 
 ```python
 # Get a range of 10 numbers starting from 0
 range(10)
 # range(0, 10)
+```
 
-# Get a range of all indexes in a list
+Use it to get a range of all indexes in a list.
+
+```python
 range(len(fruits))
 # range(0, 6)
+```
 
+You can use `for` to loop through each index.
+```python
 # Print each index in a list
 for i in range(len(fruits)):
     print(i)
@@ -125,11 +140,14 @@ for i in range(len(fruits)):
 # 3
 # 4
 # 5
+```
 
+You can use this to access the list items by index.
+```python
 # Print the index of each item in a list, and its value
 for i in range(len(fruits)):
     print(f"{i} - {fruits[i]}")
-# 0 - apple
+# 0 - apricot
 # 1 - blueberry
 # 2 - cherry
 # 3 - eggplant
@@ -137,5 +155,20 @@ for i in range(len(fruits)):
 # 5 - grape
 ```
 
+
+Let's capitalize every other item in our list by combining `range()`, the `%` operator, index assignment and the `captialize()` function.
+```python
+# Print the index of each item in a list, and its value
+for i in range(len(fruits)):
+    if i % 2 == 0:
+        fruits[i] = fruits[i].capitalize()
+    print(f"{i} - {fruits[i]}")
+# 0 - apricot
+# 1 - blueberry
+# 2 - cherry
+# 3 - eggplant
+# 4 - fig
+# 5 - grape
+```
 
 
