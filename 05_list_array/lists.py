@@ -18,14 +18,6 @@ fruits.append("cherry")
 fruits = ["apple", "banana", "cherry", "eggplant", "fig", "grape"]
 
 
-# Access the item at index 0 (first item)
-fruits[0]
-# 'apple'
-
-# Access the item at index 2 (third item)
-fruits[2]
-# 'cherry'
-
 
 # Get the number of items in the list
 len(fruits)
@@ -51,8 +43,8 @@ fruits[5]  # The sixth item, index 5
 fruits.insert(1, "blueberry")
 # ['apple', 'blueberry', 'banana', 'cherry', 'eggplant', 'fig', 'grape']
 
-# Insert 'blueberry' at index 1
-fruits.pop(2)  # Pop out the value at index 2 ('banana')
+# Pop out the value at index 2 ('banana')
+fruits.pop(2)
 # ['apple', 'blueberry', 'cherry', 'eggplant', 'fig', 'grape']
 
 
@@ -60,58 +52,40 @@ fruits.pop(2)  # Pop out the value at index 2 ('banana')
 for fruit in fruits:
     print(fruit)
 # apple
-# banana
+# blueberry
 # cherry
+# grape
 # eggplant
 # fig
-# grape
 
 
 # Get a range of 10 numbers starting from 0
 range(10)
 # range(0, 10)
 
-
-
 # Get a range of all indexes in a list
 range(len(fruits))
-# range(0, 8)
+# range(0, 6)
 
+# Print each index in a list
+for i in range(len(fruits)):
+    print(i)
+# 0
+# 1
+# 2
+# 3
+# 4
+# 5
 
 # Print the index of each item in a list, and its value
 for i in range(len(fruits)):
     print(f"{i} - {fruits[i]}")
 # 0 - apple
-# 1 - banana
-# 2 - fig
-# 3 - date
-# 4 - eggplant
-# 5 - cherry
-# 6 - grape
-# 7 - honeydew
-
-
-# Put the list in order
-fruits.sort()
-# ['apple', 'banana', 'cherry', 'date', 'eggplant', 'fig', 'grape', 'honeydew']
-
-
-
-# You can add duplicates to lists
-fruits.append("cherry")      # Add to the end
-# ['apple', 'banana', 'cherry', 'date', 'eggplant', 'fig', 'grape', 'honeydew', 'cherry']
-fruits.insert(4, "cherry")   # Insert before the 4th index
-# ['apple', 'banana', 'cherry', 'date', 'cherry', 'eggplant', 'fig', 'grape', 'honeydew', 'cherry']
-
-
-
-# Remove the first occurence of an item
-fruits.remove("cherry")
-# ['apple', 'banana', 'date', 'cherry', 'eggplant', 'fig', 'grape', 'honeydew', 'cherry']
-fruits.remove("cherry")
-# ['apple', 'banana', 'date', 'eggplant', 'fig', 'grape', 'honeydew', 'cherry']
-
-
+# 1 - blueberry
+# 2 - cherry
+# 3 - eggplant
+# 4 - fig
+# 5 - grape
 
 
 

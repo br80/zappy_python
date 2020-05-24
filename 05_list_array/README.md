@@ -34,10 +34,10 @@ If you know the items ahead of time, you can put them in the list at the start.
 
 ```python
 fruits = ["apple", "banana", "cherry", "eggplant", "fig", "grape"]
-# ['apple', 'banana', 'cherry', 'eggplant', 'fig', 'grape']```
+# ['apple', 'banana', 'cherry', 'eggplant', 'fig', 'grape']
 ```
 
-### List length
+### Length
 
 Get the length of the list with `len()`
 ```python
@@ -46,13 +46,11 @@ len(fruits)
 ```
 
 
-### List indexes
+### Indexes
 
 Each item in a list can be accessed by its index. The index of an item is it's position, starting from 0.
 
 ```python
-# ['apple', 'banana', 'cherry', 'eggplant', 'fig', 'grape']
-
 fruits[0]  # The first item, index 0
 # 'apple'
 
@@ -89,8 +87,9 @@ fruits.pop(2)  # Pop out the value at index 2
 ```
 
 
+### Looping
 
-Use a `for` loop to perform an action on each item in the list.
+Use `for` to loop through the list and perform an action on each item.
 
 ```python
 for fruit in fruits:
@@ -102,5 +101,41 @@ for fruit in fruits:
 # fig
 # grape
 ```
+
+
+### Looping with an index
+
+Use `range()` to get a range of indices starting from 0.
+
+```python
+# Get a range of 10 numbers starting from 0
+range(10)
+# range(0, 10)
+
+# Get a range of all indexes in a list
+range(len(fruits))
+# range(0, 6)
+
+# Print each index in a list
+for i in range(len(fruits)):
+    print(i)
+# 0
+# 1
+# 2
+# 3
+# 4
+# 5
+
+# Print the index of each item in a list, and its value
+for i in range(len(fruits)):
+    print(f"{i} - {fruits[i]}")
+# 0 - apple
+# 1 - blueberry
+# 2 - cherry
+# 3 - eggplant
+# 4 - fig
+# 5 - grape
+```
+
 
 
