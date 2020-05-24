@@ -98,7 +98,7 @@ class Game:
 
         Barrier(0, 3, self)
 
-    def refresh_screen(self):
+    def draw_screen(self):
         clear_screen()
         print("# " * (self.num_cols + 2))
         for row in self.grid:
@@ -126,7 +126,7 @@ class Game:
         game_start = time.time()
 
         while self.running:
-            # self.refresh_screen()
+            # self.draw_screen()
             self.frame += 1
             start_time = time.time()
             if self.player.cooldown > 0:
@@ -157,7 +157,7 @@ class Game:
 
 
 g = Game()
-g.refresh_screen()
+g.draw_screen()
 g.run()
 
 

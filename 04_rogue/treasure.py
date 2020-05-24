@@ -13,6 +13,6 @@ class Treasure(GameObject):
     def die(self):
         self.game.grid[self.row][self.col] = " "
         self.game.treasures.remove(self)
-        self.game.refresh_screen()
+        self.game.draw_screen()
         if len(self.game.treasures) == 0:
             self.game.do_win()

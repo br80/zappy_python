@@ -32,7 +32,7 @@ class GameObject():
             self.row = row
             self.col = col
         grid[self.row][self.col] = self
-        game.refresh_screen()
+        game.draw_screen()
         return moved
     def handle_collision(self, collision_object):
         if collision_object == " ":
@@ -82,7 +82,7 @@ class Weapon(GameObject):
             else:
                 game.grid[self.row][self.col] = self
                 self.frame_to_destroy = game.frame + lifetime
-                game.refresh_screen()
+                game.draw_screen()
                 Weapon(name, self.row, self.col, facing, lifetime, size-1, game)
 
     def set_row_col(self, player_row, player_col, facing):
@@ -105,7 +105,7 @@ class Weapon(GameObject):
     def die(self):
         self.game.grid[self.row][self.col] = " "
         self.game.weapons.remove(self)
-        self.game.refresh_screen()
+        self.game.draw_screen()
 
 
 
