@@ -30,7 +30,7 @@ fruits.remove('apple')
 # ['cherry', 'apple']
 ```
 
-If you know the items ahead of time, you can put them in the list at the start.
+If you know the items ahead of time, you can populate the list from the start.
 
 ```python
 fruits = ["apple", "banana", "cherry", "eggplant", "fig", "grape"]
@@ -45,10 +45,9 @@ len(fruits)
 # 6
 ```
 
-
 ### Indexes
 
-Each item in a list can be accessed by its index. The index of an item is it's position, starting from 0.
+Each item in a list can be accessed by its index. The index of an item is its position, starting from 0.
 
 ```python
 fruits
