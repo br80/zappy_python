@@ -171,4 +171,32 @@ for i in range(len(fruits)):
 # 5 - grape
 ```
 
+### Number lists
 
+If your list only consists of numbers, Python lets you run some special functions.
+
+```python
+numbers = [2, 4, 6, 8, 10]
+```
+
+Find the smallest value with `min()`
+
+```python
+min(numbers)
+# 2
+```
+
+Find the largest value with `max()`
+
+```python
+min(numbers)
+# 10
+```
+
+Add up all the numbers with `sum()`
+
+```python
+# Add up all the numbers
+sum(numbers)
+# 30
+```

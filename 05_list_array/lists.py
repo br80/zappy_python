@@ -101,20 +101,12 @@ for i in range(len(fruits)):
 # Create a list with numbers in it
 numbers = [2, 4, 6, 8, 10]
 
-# Access the item at index 0 (first item)
-numbers[0]
-# 2
-
-# Access the item at index 2 (third item)
-numbers[2]
-# 6
-
 # Get the minimum value
 min(numbers)
 # 2
 
 # Get the maximum value
-min(numbers)
+max(numbers)
 # 10
 
 # Add up all the numbers
