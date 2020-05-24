@@ -20,7 +20,7 @@ class Game:
     def __init__(self):
         # Init grid
 
-        self.framerate = 100
+        self.framerate = 60
         self.frame = 0
         self.running = True
 

@@ -3,7 +3,6 @@ import random
 from object import GameObject
 
 
-
 class Enemy(GameObject):
     def __init__(self, name, row, col, speed, wait_time, game):
         super().__init__(name, row, col, game)
@@ -13,22 +12,22 @@ class Enemy(GameObject):
         self.game.grid[row][col] = self
         self.wait_time = int(wait_time * self.game.framerate)  # Wait half second
         self.frame_to_act = self.wait_time
-        self.is_waiting = True
+        self.should_wait = True
 
     def act(self, frame):
         if frame >= self.frame_to_act:
             # Alternate between waiting and action
-            if self.is_waiting:
-                self.do_action()
-                self.is_waiting = False
+            if self.should_wait:
+                self.wait()
             else:
-                self.do_wait()
-                self.is_waiting = True
-    def do_action(self):
-          self.random_move()
-          self.frame_to_act += int(1 * self.speed)
-    def do_wait(self):
-          self.frame_to_act += self.wait_time
+                self.action()
+    def action(self):
+        self.random_move()
+        self.frame_to_act += int(1 * self.speed)
+        self.should_wait = True
+    def wait(self):
+        self.frame_to_act += self.wait_time
+        self.should_wait = False
 
     def valid_moves(self):
         directions = []
@@ -52,8 +51,6 @@ class Enemy(GameObject):
 
     def random_move(self):
         move_choices = ["north", "south", "west", "east"]
-        # Try again if the move is unsuccessful
-        tries = 10
         choices = self.valid_moves()
         if len(choices) > 0:
             self.move(random.choice(choices))

@@ -149,9 +149,9 @@ class Enemy(GameObject):
         self.frame_to_act = int(1 * self.speed)
     def act(self, frame):
         if frame >= self.frame_to_act:
-            self.do_action()
+            self.action()
             self.frame_to_act += int(1 * self.speed)
-    def do_action(self):
+    def action(self):
           self.random_move()
     def random_move(self):
         move_choices = ["north", "south", "west", "east"]
