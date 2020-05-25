@@ -38,17 +38,23 @@ d["key"]
 You can build the dictionary at the start if you know your keys and values.
 
 ```python
-d = {"key1": "value1", "key2": "value2", "key3": "value3"}
-# {'key1': 'value1', 'key2': 'value2', 'key3': 'value3'}
+traits = {"name": "bob",
+          "age": 16,
+          "height": 64,
+          "friends": ["alice", "charlie"]
+         }
+# {'name': 'bob', 'age': 16, 'height': 64, 'friends': ['alice', 'charlie']}
 ```
+
+Note that values can be any valid type, including strings, numbers, lists and more.
 
 ### Length
 
 Just like lists, you can get the number of key/value pairs with `len()`
 
 ```python
-len(d)
-# 3
+len(traits)
+# 4
 ```
 
 
@@ -57,14 +63,55 @@ len(d)
 Just like lists, you can loop through dictionaries with `for`.
 
 ```python
-for fruit in fruits:
-    print(fruit)
-# apricot
-# blueberry
-# cherry
-# eggplant
-# fig
-# grape
+# {'name': 'bob', 'age': 16, 'height': 64, 'friends': ['alice', 'charlie']}
+for key in traits:
+    print(key)
+# name
+# age
+# height
+# friends
 ```
+
+Note that this loops through the __keys__, NOT the __values__. You can loop through the values using your keys:
+
+```python
+# {'name': 'bob', 'age': 16, 'height': 64, 'friends': ['alice', 'charlie']}
+for key in traits:
+    print(traits[key])
+# bob
+# 16
+# 64
+# ['alice', 'charlie']
+```
+
+You can also do this using `values()`.
+
+```python
+for value in traits.values():
+    print(value)
+# bob
+# 16
+# 64
+# ['alice', 'charlie']
+```
+
+Looping with the key is usually better because it lets you access both the keys and values.
+
+```python
+for key in traits:
+    print(f"{key}: {traits[key]}")
+# name: bob
+# age: 16
+# height: 64
+# friends: ['alice', 'charlie']
+```
+
+
+
+
+
+
+
+
 
 
