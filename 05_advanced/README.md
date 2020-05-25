@@ -1,3 +1,18 @@
+
+* Nested Loops
+* 2D arrays
+* List Comprehensions
+* Time
+  * Sleep
+* Input
+  * KBHit
+  * Screen clearn
+
+
+
+
+
+
 ### Nested loops
 
 You can nest lists, dictionaries, and values together as deep as you like.

@@ -18,6 +18,7 @@
 
 ## Topics
 
+* Comments
 * Variables
   * `=`
 * Functions
