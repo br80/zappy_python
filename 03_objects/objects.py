@@ -1,56 +1,59 @@
-
-bear = {}
-bear["species"] = "bear"
-bear["color"] = "brown"
-bear["size"] = "big"
-bear["diet"] = []
-
-bear["diet"].append("berries")
-bear["diet"].append("birds")
-bear["diet"].append("bugs")
-
-
-print(bear)
-
-
-animals = {}
-
-animals["ant"] = {"species": "ant", "color": "black", "size": "tiny"}
-animals["bear"] = {"species": "bear", "color": "brown", "size": "big"}
-animals["cat"] = {"species": "cat", "color": "grey", "size": "small"}
-
-
-animals["bear"]["diet"] = ["berries", "bugs", "birds"]
-
-
-
-
-
-# Objects and Dictionaries
-
 class Animal:
-    def __init__(self, species, color, name, size, diet):
+    def __init__(self, species, size, diet):
         self.species = species
-        self.color = color
-        self.name = name
         self.size = size
         self.diet = diet
+    def get_size(self):
+        return self.size
+    def speak(self):
+        print("...")
 
-bear = Animal("bear", "brown", "Bob", "big")
 
-bear.name
+class Ant(Animal):
+    def __init__(self, name, age):
+        super().__init__(name, age, "ant", "tiny", "omni")
+
+
+class Bear(Animal):
+    def __init__(self, name, age):
+        super().__init__(name, age, "bear", "large", "omni")
+    def speak(self):
+        print("ROAR!")
+
+
+class Cat(Animal):
+    def __init__(self, name, age):
+        super().__init__(name, age, "cat", "small", "carni")
+    def speak(self):
+        print("meow")
+
+
+class Deer(Animal):
+    def __init__(self, name, age):
+        super().__init__(name, age, "deer", "medium", "herbi")
+
+
+class Elephant(Animal):
+    def __init__(self, name, age):
+        super().__init__(name, age, "elephant", "x-large", "herbi")
+    def speak(self):
+        print("BAROOOG!")
 
 
 
-# Create an empty dictionary
-animals = []
 
-bear = {"species": "bear",
-        "name": "Bob",
-        "color": "brown",
-        "size": "big"
-        "diet": ["berries", "bugs", "birds"]}
 
-animals.append(bear)
+antoine = Ant("Antoine", 1)
+antoine.get_size()
+# 'tiny'
 
-bear["name"]
+anthony = Ant("Anthony", 2)
+anthony.speak()
+# '...'
+
+
+cathy = Cat("Cathy", 5)
+cathy.get_size()
+# 'small'
+cathy.get_size()
+# 'meow'
