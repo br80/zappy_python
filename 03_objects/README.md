@@ -99,7 +99,9 @@ Say we want to extend our program to store many instances of each animal, along 
 
 ```python
 class Animal:
-    def __init__(self, species, size, diet):
+    def __init__(self, name, age, species, size, diet):
+        self.name = name
+        self.age = age
         self.species = species
         self.size = size
         self.diet = diet
@@ -108,9 +110,7 @@ class Animal:
 
 class Ant(Animal):
     def __init__(self, name, age):
-        super().__init__("ant", "tiny", "omni")
-        self.name = name
-        self.age = age
+        super().__init__(name, age, "ant", "tiny", "omni")
 
 ant = Ant("Anthony", 1)
 ant2 = Ant("Antoine", 2)
@@ -124,7 +124,7 @@ ant.species
 # 'ant'
 ant.size
 # 'tiny'
-ant.get_size()
+ant.size
 # 'tiny'
 ant.diet
 # 'omni'
@@ -133,4 +133,20 @@ ant2.name
 # 'Antoine'
 ```
 
+Since ants are animals, we can __inherit__ all animal properties and behavior from the `Animal` class with this line:
+
+```python
+class Ant(Animal):
+```
+
+`Ant` is a sub-class of `Animal` (sometimes called child class) and `Animal` is the super-class of `Ant` (sometimes called parent class).
+
+Notice that since all ants are tiny omnivores, the `Ant` class fills those in automatically, only requiring us to fill in the name and age. The rest is handled like a normal animal by calling the super-class constructor, `super().__init__()`.
+
+You'll also notice that the `Ant` class inherits the `get_size()` method from `Animal` even though we don't explicitly copy it over.
+
+```python
+ant.get_size()
+# 'tiny'
+```
 
