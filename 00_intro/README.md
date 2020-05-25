@@ -19,6 +19,8 @@
 ## Topics
 
 * Comments
+* Types
+  * `int`, `str`, `float`, `bool`, `None`
 * Variables
   * `=`
 * Functions
