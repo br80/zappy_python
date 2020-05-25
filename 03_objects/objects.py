@@ -47,7 +47,7 @@ animals = []
 
 bear = {"species": "bear",
         "name": "Bob",
-        "color": "brow",
+        "color": "brown",
         "size": "big"
         "diet": ["berries", "bugs", "birds"]}
 
