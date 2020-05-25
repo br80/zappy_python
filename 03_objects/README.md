@@ -1,6 +1,6 @@
 # Objects
 
-A well-organized codebase needs structure and objects are a great way to give structure to your data.
+A well-organized codebase needs structure and objects are a great way to give structure to your data with classifications and attributes.
 
 ### Creating objects
 
@@ -143,7 +143,7 @@ class Ant(Animal):
 
 Notice that since all ants are tiny omnivores, the `Ant` class fills those in automatically, only requiring us to fill in the name and age. The rest is handled like a normal animal by calling the super-class constructor, `super().__init__()`.
 
-You'll also notice that the `Ant` class inherits the `get_size()` method from `Animal` even though we don't explicitly copy it over.
+You'll also notice that the `Ant` class inherits the `get_size()` method from `Animal` even though we don't explicitly declare it.
 
 ```python
 ant.get_size()
