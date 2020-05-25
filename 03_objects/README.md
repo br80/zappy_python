@@ -61,6 +61,35 @@ Animal()
 Note that `self` is used to refer to the object itself and is required in the class definitions. It is included automatically when you construct an object.
 
 
+### Printing objects
+
+Let's try print our "ant" object.
+
+```python
+print(animals["ant"])
+# <__main__.Animal object at 0x101035250>
+```
+
+Yikes, not too useful. We can fix that by defining a `__str__()` method, which returns a human-readable string.
+
+```python
+class Animal:
+    def __init__(self, species, size, diet):
+        self.species = species
+        self.size = size
+        self.diet = diet
+    def __str__(self):
+        return f"{self.species}: {self.size} {self.diet}vore"
+
+
+animals["ant"] = Animal("ant", "tiny", "omni")
+
+print(animals["ant"])
+# ant: tiny omnivore
+```
+
+That's much better.
+
 ### Class methods
 
 To define an action, add a method within the class and include `self` as the first argument.
@@ -72,6 +101,8 @@ class Animal:
         self.species = species
         self.size = size
         self.diet = diet
+    def __str__(self):
+        return f"{self.species}: {self.size} {self.diet}vore"
     def get_size(self):
         return self.size
 
@@ -105,6 +136,8 @@ class Animal:
         self.species = species
         self.size = size
         self.diet = diet
+    def __str__(self):
+        return f"{self.name}: {self.species}, age {self.age}, {self.size} {self.diet}vore"
     def get_size(self):
         return self.size
 
@@ -115,22 +148,10 @@ class Ant(Animal):
 ant = Ant("Anthony", 1)
 ant2 = Ant("Antoine", 2)
 
-
-ant.name
-# 'Anthony'
-ant.age
-# 1
-ant.species
-# 'ant'
-ant.size
-# 'tiny'
-ant.size
-# 'tiny'
-ant.diet
-# 'omni'
-
-ant2.name
-# 'Antoine'
+print(ant)
+# Anthony: ant, age 1, tiny omnivore
+print(ant2)
+# Antoine: ant, age 2, tiny omnivore
 ```
 
 Since ants are animals, we can __inherit__ all animal properties and behavior from the `Animal` class with this line:

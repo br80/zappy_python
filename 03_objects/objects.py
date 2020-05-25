@@ -1,8 +1,12 @@
 class Animal:
-    def __init__(self, species, size, diet):
+    def __init__(self, name, age, species, size, diet):
+        self.name = name
+        self.age = age
         self.species = species
         self.size = size
         self.diet = diet
+    def __str__(self):
+        return f"{self.name}: {self.species}, age {self.age}, {self.size} {self.diet}vore"
     def get_size(self):
         return self.size
     def speak(self):
@@ -57,3 +61,5 @@ cathy.get_size()
 # 'small'
 cathy.get_size()
 # 'meow'
+print(cathy)
+# Cathy: cat, age 5, small carnivore
