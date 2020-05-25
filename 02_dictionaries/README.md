@@ -48,6 +48,42 @@ traits = {'name': 'bob',
 
 Note that values can be any valid type, including strings, numbers, lists and more.
 
+
+### Keys and Values
+
+Use `keys()` and `values()` to extract the keys and values from the dictionary.
+
+```python
+traits.keys()
+# dict_keys(['name', 'age', 'height', 'friends'])
+
+traits.values()
+# dict_values(['bob', 16, 64, ['alice', 'charlie']])
+```
+
+### Searching
+
+You can see if a key exists in the dictionary using `in`
+
+```python
+'age' in traits
+# True
+
+'weight' in traits
+# False
+```
+
+You can see if a value exists in the dictionary using `in` with `values()`
+
+```python
+'bob' in traits.values()
+# True
+
+'dan' in traits.values()
+# False
+```
+
+
 ### Length
 
 Just like lists, you can get the number of key/value pairs with `len()`
@@ -56,7 +92,6 @@ Just like lists, you can get the number of key/value pairs with `len()`
 len(traits)
 # 4
 ```
-
 
 ### Looping
 
