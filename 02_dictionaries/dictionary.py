@@ -13,11 +13,11 @@ d["key2"] = "value2"
 
 # Create a dictionary with existing values
 traits = {'name': 'bob',
-          'age': 16,
+          'age': 20,
           'height': 64,
           'friends': ['alice', 'charlie']
          }
-# {'name': 'bob', 'age': 16, 'height': 64, 'friends': ['alice', 'charlie']}
+# {'name': 'bob', 'age': 20, 'height': 64, 'friends': ['alice', 'charlie']}
 
 
 # Search to see if the dictionary contains a given key
@@ -53,7 +53,7 @@ for key in traits:
 for key in traits:
     print(traits[key])
 # bob
-# 16
+# 20
 # 64
 # ['alice', 'charlie']
 
@@ -61,7 +61,7 @@ for key in traits:
 for value in traits.values():
     print(value)
 # bob
-# 16
+# 20
 # 64
 # ['alice', 'charlie']
 

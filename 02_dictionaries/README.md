@@ -39,11 +39,11 @@ You can build the dictionary at the start if you know your keys and values.
 
 ```python
 traits = {'name': 'bob',
-          'age': 16,
+          'age': 20,
           'height': 64,
           'friends': ['alice', 'charlie']
          }
-# {'name': 'bob', 'age': 16, 'height': 64, 'friends': ['alice', 'charlie']}
+# {'name': 'bob', 'age': 20, 'height': 64, 'friends': ['alice', 'charlie']}
 ```
 
 Note that values can be any valid type, including strings, numbers, lists and more.
@@ -58,7 +58,7 @@ traits.keys()
 # dict_keys(['name', 'age', 'height', 'friends'])
 
 traits.values()
-# dict_values(['bob', 16, 64, ['alice', 'charlie']])
+# dict_values(['bob', 20, 64, ['alice', 'charlie']])
 ```
 
 ### Searching
