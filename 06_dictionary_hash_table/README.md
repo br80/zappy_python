@@ -14,34 +14,34 @@ d = {}
 For each value you store in the dictionary, you need a key.
 
 ```python
-d["key"] = "value"
+d['key'] = 'value'
 # {'key': 'value'}
 ```
 
 You can access the value with the key.
 
 ```python
-d["key"]
+d['key']
 'value'
 ```
 
 You can only store one value per key. Assigning a new value to an existing key will overwrite the value.
 
 ```python
-d["key"]
+d['key']
 # 'value'
-d["key"] = "new value"
-d["key"]
+d['key'] = 'new value'
+d['key']
 # 'new value'
 ```
 
 You can build the dictionary at the start if you know your keys and values.
 
 ```python
-traits = {"name": "bob",
-          "age": 16,
-          "height": 64,
-          "friends": ["alice", "charlie"]
+traits = {'name': 'bob',
+          'age': 16,
+          'height': 64,
+          'friends': ['alice', 'charlie']
          }
 # {'name': 'bob', 'age': 16, 'height': 64, 'friends': ['alice', 'charlie']}
 ```
@@ -63,7 +63,7 @@ len(traits)
 Just like lists, you can loop through dictionaries with `for`.
 
 ```python
-# {'name': 'bob', 'age': 16, 'height': 64, 'friends': ['alice', 'charlie']}
+# {'name': 'bob', 'age': 20, 'height': 64, 'friends': ['alice', 'charlie']}
 for key in traits:
     print(key)
 # name
@@ -75,11 +75,11 @@ for key in traits:
 Note that this loops through the __keys__, NOT the __values__. You can loop through the values using your keys:
 
 ```python
-# {'name': 'bob', 'age': 16, 'height': 64, 'friends': ['alice', 'charlie']}
+# {'name': 'bob', 'age': 20, 'height': 64, 'friends': ['alice', 'charlie']}
 for key in traits:
     print(traits[key])
 # bob
-# 16
+# 20
 # 64
 # ['alice', 'charlie']
 ```
@@ -90,7 +90,7 @@ You can also do this using `values()`.
 for value in traits.values():
     print(value)
 # bob
-# 16
+# 20
 # 64
 # ['alice', 'charlie']
 ```
@@ -99,19 +99,52 @@ Looping with the key is usually better because it lets you access both the keys 
 
 ```python
 for key in traits:
-    print(f"{key}: {traits[key]}")
+    print(f'{key}: {traits[key]}')
 # name: bob
-# age: 16
+# age: 20
 # height: 64
 # friends: ['alice', 'charlie']
 ```
 
 
+### Nested loops
 
+You can nest lists, dictionaries, and values together as deep as you like.
 
+```python
+alice =  {'name': 'alice', 'age': 21, 'height': 61, 'friends': ['bob', 'dan']}
+bob = {'name': 'bob', 'age': 20, 'height': 64, 'friends': ['alice', 'charlie']}
+charlie =  {'name': 'charlie', 'age': 21, 'height': 63, 'friends': ['bob']}
+dan =  {'name': 'dan', 'age': 22, 'height': 66, 'friends': ['alice', 'bob']}
 
+people = {'alice': alice, 'bob': bob, 'charlie': charlie, 'dan': dan}
+# {
+# 'alice': {'name': 'alice', 'age': 21, 'height': 61, 'friends': ['bob', 'dan']},
+# 'bob': {'name': 'bob', 'age': 20, 'height': 64, 'friends': ['alice', 'charlie']},
+# 'charlie': {'name': 'charlie', 'age': 21, 'height': 63, 'friends': ['bob']},
+# 'dan': {'name': 'dan', 'age': 22, 'height': 66, 'friends': ['alice', 'bob']}
+# }
+```
 
+You can run nested loops as well.
 
+```python
+for person in people:
+    print(f'{person} is friends with:')
+    for friend in people[person]['friends']:
+        print(f'  {friend}')
+# alice is friends with:
+#   bob
+#   dan
+# bob is friends with:
+#   alice
+#   charlie
+# charlie is friends with:
+#   bob
+# dan is friends with:
+#   alice
+#   bob
+```
 
 
 
