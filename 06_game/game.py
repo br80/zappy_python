@@ -52,7 +52,7 @@ class Game:
                 for row in file_reader:
                     if self.num_cols is None:
                         self.num_cols = len(row)
-                    self.grid.append([" "] * self.num_cols)
+                    self.grid.append(["  "] * self.num_cols)
                     col_i = 0
                     for col in row:
                         self.create(col, self.num_rows, col_i)
@@ -67,7 +67,7 @@ class Game:
         elif key == "#":
             Barrier(row, col, self)
         elif key == "P":
-            Player("B", row, col, self)
+            Player("😀", row, col, self)
         elif key == "T":
             Treasure(row, col, self)
 
@@ -77,7 +77,7 @@ class Game:
         self.num_cols = 20
         self.grid = []
         for i in range(self.num_rows):
-            self.grid.append([" "] * self.num_cols)
+            self.grid.append(["  "] * self.num_cols)
 
         Player("Br80", 0, 0, self)
 
@@ -111,11 +111,11 @@ class Game:
     def print_screen(self):
         clear_screen()
         print("")
-        print("# " * (self.num_cols + 2))
+        print("⬜️" * (self.num_cols + 2))
         for row in self.grid:
-            char_row = [str(c)[0] for c in row]
-            print(f"# {' '.join(char_row)} #")
-        print("# " * (self.num_cols + 2))
+            char_row = [str(c) for c in row]
+            print(f"⬜️{''.join(char_row)}⬜️")
+        print("⬜️" * (self.num_cols + 2))
         print("")
         print(f"Gold: {self.player.gold}")
         print(self.player.cooldown)

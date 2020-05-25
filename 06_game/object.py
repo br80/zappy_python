@@ -5,7 +5,7 @@ class GameObject():
         self.name = name
         self.type = "NEUTRAL"
         self.game = game
-        if game.grid[row][col] == " " or self.handle_collision(game.grid[row][col]):
+        if game.grid[row][col] == "  " or self.handle_collision(game.grid[row][col]):
             self.row = row
             self.col = col
             game.grid[row][col] = self
@@ -17,7 +17,7 @@ class GameObject():
         col = self.col
         game = self.game
         grid = game.grid
-        grid[row][col] = " "
+        grid[row][col] = "  "
         if direction == "north" and row > 0:
             row -= 1
         elif direction == "south" and row < self.game.num_rows - 1:
@@ -35,7 +35,7 @@ class GameObject():
         game.draw_screen()
         return moved
     def handle_collision(self, collision_object):
-        if collision_object == " ":
+        if collision_object == "  ":
             return True
         elif collision_object.type == "BARRIER":
             return False
@@ -76,7 +76,7 @@ class Weapon(GameObject):
             for enemy in game.enemies:
                 if enemy.row == self.row and enemy.col == self.col:
                     enemy.die()
-            if game.grid[self.row][self.col] != " " and game.grid[self.row][self.col].type == "BARRIER":
+            if game.grid[self.row][self.col] != "  " and game.grid[self.row][self.col].type == "BARRIER":
                 if self in self.game.weapons:
                    self.game.weapons.remove(self)
             else:
@@ -103,7 +103,7 @@ class Weapon(GameObject):
         if frame >= self.frame_to_destroy:
             self.die()
     def die(self):
-        self.game.grid[self.row][self.col] = " "
+        self.game.grid[self.row][self.col] = "  "
         self.game.weapons.remove(self)
         self.game.draw_screen()
 
@@ -174,6 +174,6 @@ class Enemy(GameObject):
             self.game.enemies.remove(self)
         occupant = self.game.grid[self.row][self.col]
         if occupant == self:
-            occupant = " "
+            occupant = "  "
 
 

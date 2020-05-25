@@ -3,7 +3,7 @@ import random
 
 class Snake(Enemy):
     def __init__(self, row, col, game):
-        super().__init__("S", row, col, 1000, 0.5, game)
+        super().__init__("🐍", row, col, 1000, 0.5, game)
         self.energy = 3
 
     def action(self):

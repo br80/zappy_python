@@ -13,7 +13,7 @@ class Weapon(GameObject):
             for enemy in game.enemies:
                 if enemy.row == self.row and enemy.col == self.col:
                     enemy.die()
-            if game.grid[self.row][self.col] != " " and game.grid[self.row][self.col].type in ["BARRIER", "TREASURE"]:
+            if game.grid[self.row][self.col] != "  " and game.grid[self.row][self.col].type in ["BARRIER", "TREASURE"]:
                 if self in self.game.weapons:
                    self.game.weapons.remove(self)
             else:
@@ -40,7 +40,7 @@ class Weapon(GameObject):
         if frame >= self.frame_to_destroy:
             self.die()
     def die(self):
-        self.game.grid[self.row][self.col] = " "
+        self.game.grid[self.row][self.col] = "  "
         self.game.weapons.remove(self)
         self.game.draw_screen()
 

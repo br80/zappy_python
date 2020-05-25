@@ -33,19 +33,19 @@ class Enemy(GameObject):
         directions = []
         if self.row > 0:
             object_n = self.game.grid[self.row-1][self.col]
-            if object_n == " " or object_n.type == "PLAYER":
+            if object_n == "  " or object_n.type == "PLAYER":
                 directions.append("north")
         if self.row < self.game.num_rows - 1:
             object_s = self.game.grid[self.row+1][self.col]
-            if object_s == " " or object_s.type == "PLAYER":
+            if object_s == "  " or object_s.type == "PLAYER":
                 directions.append("south")
         if self.col > 0:
             object_w = self.game.grid[self.row][self.col-1]
-            if object_w == " " or object_w.type == "PLAYER":
+            if object_w == "  " or object_w.type == "PLAYER":
                 directions.append("west")
         if self.col < self.game.num_cols - 1:
             object_e = self.game.grid[self.row][self.col+1]
-            if object_e == " " or object_e.type == "PLAYER":
+            if object_e == "  " or object_e.type == "PLAYER":
                 directions.append("east")
         return directions
 
@@ -71,5 +71,5 @@ class Enemy(GameObject):
             self.game.enemies.remove(self)
         occupant = self.game.grid[self.row][self.col]
         if occupant == self:
-            occupant = " "
+            occupant = "  "
 
