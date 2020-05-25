@@ -67,7 +67,7 @@ class Game:
         elif key == "#":
             Barrier(row, col, self)
         elif key == "P":
-            Player("P", row, col, self)
+            Player("B", row, col, self)
         elif key == "T":
             Treasure(row, col, self)
 
@@ -110,18 +110,20 @@ class Game:
 
     def print_screen(self):
         clear_screen()
+        print("")
         print("# " * (self.num_cols + 2))
         for row in self.grid:
             char_row = [str(c)[0] for c in row]
             print(f"# {' '.join(char_row)} #")
         print("# " * (self.num_cols + 2))
+        print("")
         print(f"Gold: {self.player.gold}")
         print(self.player.cooldown)
 
         self.debug_prints += 1
         print(f"{self.debug_prints} prints")
-        if int(time.time()) > self.debug_last_frame_second:
-            self.debug_last_frame_second = int(time.time())
+        if time.time() - self.debug_last_frame_second > 1:
+            self.debug_last_frame_second = time.time()
             self.debug_fps = self.frame // self.debug_last_frame_second
             self.debug_fps = self.frame - self.frame_at_last_second
             self.frame_at_last_second = self.frame
