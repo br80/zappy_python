@@ -4,6 +4,8 @@ import os
 import time
 import csv
 
+from graphics import Graphics
+
 from barrier import Barrier
 
 from player import Player
@@ -23,6 +25,9 @@ class Game:
         self.framerate = 60
         self.frame = 0
         self.running = True
+
+        self.graphics = Graphics("ascii", self)
+        self.border_icon = self.graphics.get_border_icon()
 
         self.show_debug = False
         self.debug_prints = 0
@@ -68,7 +73,7 @@ class Game:
         elif key == "#":
             Barrier(row, col, self)
         elif key == "P":
-            Player("😀", row, col, self)
+            Player(row, col, self)
         elif key == "T":
             Treasure(row, col, self)
 
@@ -112,11 +117,11 @@ class Game:
     def print_screen(self):
         clear_screen()
         print("")
-        print("⬜️" * (self.num_cols + 2))
+        print(self.border_icon * (self.num_cols + 2))
         for row in self.grid:
             char_row = [str(c) for c in row]
-            print(f"⬜️{''.join(char_row)}⬜️")
-        print("⬜️" * (self.num_cols + 2))
+            print(f"{self.border_icon}{''.join(char_row)}{self.border_icon}")
+        print(self.border_icon * (self.num_cols + 2))
         print("")
         print(f"Gold: {self.player.gold}")
 

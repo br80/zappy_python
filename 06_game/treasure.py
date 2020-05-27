@@ -3,7 +3,7 @@ from object import GameObject
 
 class Treasure(GameObject):
     def __init__(self, row, col, game):
-        super().__init__("🎁", row, col, game)
+        super().__init__("TREASURE", row, col, game)
         self.type = "TREASURE"
         self.game.treasures.append(self)
         self.value = 100

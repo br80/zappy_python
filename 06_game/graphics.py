@@ -1,4 +1,4 @@
-class Graphics
+class Graphics:
     def __init__(self, mode, game):
         self.game = game
         self.mode = mode
@@ -20,16 +20,27 @@ class Graphics
                               "ascii": "+ ",
                               "emoji": "🔥"
                       },
+                      "TREASURE": {
+                              "ascii": "$ ",
+                              "emoji": "🎁"
+                      },
+                      "BARRIER": {
+                              "ascii": "# ",
+                              "emoji": "⬜️"
+                      },
                       "EMPTY": {
                               "ascii": "  ",
                               "emoji": "  "
                       },
                      }
 
-        def get_icon(self, icon_id):
-            if icon_id in self.icons:
-                icons = self.icons[icon_id]
-                if self.mode in icons:
-                    return icons[self.mode]
-                return icons[self.default_mode]
+    def get_icon(self, icon_id):
+        if icon_id in self.icons:
+            icons = self.icons[icon_id]
+            if self.mode in icons:
+                return icons[self.mode]
+            return icons[self.default_mode]
+
+    def get_border_icon(self):
+        return self.get_icon("BARRIER")
 

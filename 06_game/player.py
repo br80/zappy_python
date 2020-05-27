@@ -3,8 +3,8 @@ from object import GameObject
 from weapon import Weapon
 
 class Player(GameObject):
-    def __init__(self, name, row, col, game):
-        super().__init__(name, row, col, game)
+    def __init__(self, row, col, game):
+        super().__init__("PLAYER", row, col, game)
         self.type = "PLAYER"
         self.game.grid[row][col] = self
         self.attack_speed = int(self.game.framerate / 4)  # 1/4 second
@@ -36,7 +36,7 @@ class Player(GameObject):
         self.game.game_over()
 
     def attack(self):
-        w = Weapon("🔥", self.row, self.col, self.facing, self.attack_speed, self.weapon_size, self.game)
+        w = Weapon("WEAPON", self.row, self.col, self.facing, self.attack_speed, self.weapon_size, self.game)
         self.cooldown = self.attack_speed+1  # One frame longer than weapon
 
     def collect_treasure(self, item):

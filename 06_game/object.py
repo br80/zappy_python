@@ -1,8 +1,10 @@
 import random
+from graphics import Graphics
 
 class GameObject():
-    def __init__(self, name, row, col, game):
-        self.name = name
+    def __init__(self, game_id, row, col, game):
+        self.game_id = game_id
+        self.icon = game.graphics.get_icon(game_id)
         self.type = "NEUTRAL"
         self.game = game
         self.alive = True
@@ -12,7 +14,7 @@ class GameObject():
             game.grid[row][col] = self
 
     def __str__(self):
-        return self.name[0]
+        return self.icon
 
     def move(self, direction):
         row = self.row

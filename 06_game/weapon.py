@@ -2,10 +2,13 @@ from object import GameObject
 
 
 class Weapon(GameObject):
-    def __init__(self, name, player_row, player_col, facing, lifetime, size, game):
-        self.name = name
+    def __init__(self, game_id, player_row, player_col, facing, lifetime, size, game):
+        # TODO: Inherit 
+        self.game_id = game_id
+        self.icon = game.graphics.get_icon(game_id)
         self.type = "WEAPON"
         self.game = game
+        self.alive = True
 
         row_col = self.set_row_col(player_row, player_col, facing)
         if row_col and size > 0:
@@ -20,7 +23,7 @@ class Weapon(GameObject):
                 game.grid[self.row][self.col] = self
                 self.frame_to_destroy = game.frame + lifetime
                 game.draw_screen()
-                Weapon(name, self.row, self.col, facing, lifetime, size-1, game)
+                Weapon(game_id, self.row, self.col, facing, lifetime, size-1, game)
 
     def set_row_col(self, player_row, player_col, facing):
         self.row = player_row
@@ -36,9 +39,11 @@ class Weapon(GameObject):
         else:
             return False
         return True
+
     def act(self, frame):
         if frame >= self.frame_to_destroy:
             self.die()
+
     def die(self):
         self.game.grid[self.row][self.col] = "  "
         self.game.weapons.remove(self)
