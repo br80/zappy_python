@@ -20,7 +20,7 @@ class Game:
     def __init__(self):
         # Init grid
 
-        self.framerate = 24
+        self.framerate = 60
         self.frame = 0
         self.running = True
 
@@ -174,6 +174,8 @@ class Game:
                 weapon.act(self.frame)
             wait_time = max([0, frame_time - (time.time() - start_time)])
             time.sleep(wait_time)
+
+        self.print_screen()
 
         if self.win:
             print("You win!")

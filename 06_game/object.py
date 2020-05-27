@@ -5,6 +5,7 @@ class GameObject():
         self.name = name
         self.type = "NEUTRAL"
         self.game = game
+        self.alive = True
         if game.grid[row][col] == "  " or self.handle_collision(game.grid[row][col]):
             self.row = row
             self.col = col
@@ -12,6 +13,7 @@ class GameObject():
 
     def __str__(self):
         return self.name[0]
+
     def move(self, direction):
         row = self.row
         col = self.col
@@ -31,9 +33,11 @@ class GameObject():
         if moved:
             self.row = row
             self.col = col
-        grid[self.row][self.col] = self
+        if self.alive:
+            grid[self.row][self.col] = self
         game.draw_screen()
         return moved
+
     def handle_collision(self, collision_object):
         if collision_object == "  ":
             return True
@@ -51,10 +55,7 @@ class GameObject():
         return False
 
     def die(self):
-        """
-        Default, do nothing
-        """
-        pass
+        self.alive = False
 
 
 

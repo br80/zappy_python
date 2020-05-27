@@ -32,7 +32,7 @@ class Player(GameObject):
             return False
 
     def die(self):
-        print("You have died.")
+        self.alive = False
         self.game.game_over()
 
     def attack(self):
