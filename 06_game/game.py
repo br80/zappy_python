@@ -20,10 +20,11 @@ class Game:
     def __init__(self):
         # Init grid
 
-        self.framerate = 60
+        self.framerate = 24
         self.frame = 0
         self.running = True
 
+        self.show_debug = False
         self.debug_prints = 0
         self.debug_fps = 0
         self.debug_last_frame_second = 0
@@ -118,16 +119,17 @@ class Game:
         print("⬜️" * (self.num_cols + 2))
         print("")
         print(f"Gold: {self.player.gold}")
-        print(self.player.cooldown)
 
-        self.debug_prints += 1
-        print(f"{self.debug_prints} prints")
-        if time.time() - self.debug_last_frame_second > 1:
-            self.debug_last_frame_second = time.time()
-            self.debug_fps = self.frame // self.debug_last_frame_second
-            self.debug_fps = self.frame - self.frame_at_last_second
-            self.frame_at_last_second = self.frame
-        print(f"FPS: {self.debug_fps}")
+        if self.show_debug:
+            print(self.player.cooldown)
+            self.debug_prints += 1
+            print(f"{self.debug_prints} prints")
+            if time.time() - self.debug_last_frame_second > 1:
+                self.debug_last_frame_second = time.time()
+                self.debug_fps = self.frame // self.debug_last_frame_second
+                self.debug_fps = self.frame - self.frame_at_last_second
+                self.frame_at_last_second = self.frame
+            print(f"FPS: {self.debug_fps}")
 
     def game_over(self):
         self.running = False

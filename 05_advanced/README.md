@@ -1,6 +1,6 @@
 
-* Nested Loops
 * 2D arrays
+* Nested Loops
 * List Comprehensions
 * Time
   * Sleep
