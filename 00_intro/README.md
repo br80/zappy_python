@@ -16,8 +16,6 @@ Are you studying programming in school but bored building todo lists and calcula
 
 Are you experienced in another programming language but curious about the power, flexibility and fun of Python? This series is for you.
 
-## What will you learn?
-
 
 ## Text Editor and Terminal
 
@@ -52,23 +50,13 @@ You'll need to have Python 3 installed for this series.
 
 ### Linux
 
-This can vary by Linux distribution. Check the docs! Your distro may come with Python 3 by default.
+This can vary by distribution. Check the docs! You may already have Python installed.
 
-## Python
+## Python Basics
+
+Let's go over a few basics.
 
 
-* Python basics
-  * How to read and write Python
-
-* Why Learn Python?
-  * Readability
-  * Flexibility
-  * Utility
-
-* Installation
-  * Windows
-  * Linux
-  * Mac
 
 * Interpreter
   * Scripts
