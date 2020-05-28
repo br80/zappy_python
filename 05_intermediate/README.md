@@ -1,9 +1,13 @@
 
 * 2D arrays
+
 * Nested Loops
+
 * List Comprehensions
+
 * Time
   * Sleep
+
 * Input
   * KBHit
   * Screen clearn
