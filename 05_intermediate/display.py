@@ -13,14 +13,14 @@ class Display:
 
     def __init__(self):
 
-        self.framerate = 60
+        self.framerate = 24
         self.frame = 0
         self.running = True
 
         self.cooldown = 1
 
-        self.num_rows = 10
-        self.num_cols = 20
+        self.num_rows = 20
+        self.num_cols = 50
 
         self.objects = []
         self.grid = []
@@ -86,12 +86,6 @@ class Display:
             time.sleep(wait_time)
 
         self.print_screen()
-
-        if self.win:
-            print("You win!")
-            print("You are an awesome treasure hunter!")
-        else:
-            print("Game Over")
 
         kb.set_normal_term()
 

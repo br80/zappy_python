@@ -11,8 +11,9 @@ class Object:
         self.frame_to_act = 0
         self.x = col
         self.y = row
-        self.v_x = -0.1
-        self.v_y = 0.05
+        self.v_x = 1
+        self.v_y = 1.6
+
 
     def __str__(self):
         return self.display_char
@@ -33,18 +34,21 @@ class Object:
         elif int(self.y) < old_y:
             self.move("north")
 
+
+        self.v_y += 0.05
+
         if self.x < 0.5:
             self.x = 0.5
-            self.v_x *= -1
+            self.v_x *= -0.8
         if self.x > self.display.num_cols - 0.5:
             self.x = self.display.num_cols - 0.5
-            self.v_x *= -1
+            self.v_x *= -0.8
         if self.y < 0.5:
             self.y = 0.5
-            self.v_y *= -1
+            self.v_y *= -0.8
         if self.y > self.display.num_rows - 0.5:
             self.y = self.display.num_rows - 0.5
-            self.v_y *= -1
+            self.v_y *= -0.8
 
 
 
@@ -57,19 +61,19 @@ class Object:
         if direction == "north":
             if row > 0:
                 row -= 1
-                self.y -= 1
+                # self.row -= 1
         elif direction == "south":
             if row < self.display.num_rows - 1:
                 row += 1
-                self.y += 1
+                # self.row += 1
         elif direction == "west":
             if col > 0:
                 col -= 1
-                self.col -= 1
+                # self.col -= 1
         elif direction == "east":
             if col < self.display.num_cols - 1:
                 col += 1
-                self.col += 1
+                # self.col += 1
         self.row = row
         self.col = col
         grid[row][col] = self
