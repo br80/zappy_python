@@ -16,19 +16,22 @@ Are you studying programming in school but bored building todo lists and calcula
 
 Are you experienced in another programming language but curious about the power, flexibility and fun of Python? This series is for you.
 
+## Installation and Setup
 
-## Text Editor and Terminal
+Python is very easy to install and set up. In order to write and run code though, you will need a text editor and terminal.
 
-You'll want a code-based text editor to read and write code. I recommend [Sublime Text](https://www.sublimetext.com/) for Mac and Linux, or [VSCode](https://code.visualstudio.com/) for Windows.
+### Text Editor and Terminal
+
+For text editors, I recommend [Sublime Text](https://www.sublimetext.com/) for Mac and Linux, and [VSCode](https://code.visualstudio.com/) for Windows.
 
 You'll also want to start getting used to your computer's Command Line Interface. Mac and Linux come bundled with the Terminal program by default while VSCode comes with a built-in command line.
 
 
-## Installing Python
+### Installing Python
 
 You'll need to have Python 3 installed for this series.
 
-### Mac
+#### Mac
 
 1. Open a Terminal window on your Mac.
 
@@ -38,7 +41,7 @@ You'll need to have Python 3 installed for this series.
 
 4. Test your Python install by typing `python3 --version` in your Terminal. It should return version 3.6 or greater.
 
-### Windows
+#### Windows
 
 1. Download the latest Python from the [Python website](https://www.python.org/downloads/windows/).
 
@@ -48,7 +51,7 @@ You'll need to have Python 3 installed for this series.
 
 4. Type `python --version` in the Terminal. It should return version 3.6 or greater.
 
-### Linux
+#### Linux
 
 This can vary by distribution. Check the docs! You may already have Python installed.
 
