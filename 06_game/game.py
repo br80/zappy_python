@@ -93,13 +93,6 @@ class Game:
         Snake(6, 0, self)
         Snake(6, 1, self)
 
-
-        Enemy("X", 5, 0, 100, 0.8, self)
-        Enemy("X", 5, 1, 400, 0.8, self)
-        Enemy("X", 7, 0, 400, 0.8, self)
-        Enemy("Y", 6, 0, 400, 0.2, self)
-        Enemy("Y", 6, 1, 400, 0.2, self)
-
         Treasure(7, 1, self)
 
         Barrier(4, 2, self)
