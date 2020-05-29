@@ -22,6 +22,9 @@ class Display:
         for i in range(10):
           self.grid.append(["."] * 20)
 
+    def process_command(self, c):
+        directions = {"w": "north", "a": "west", "s": "south", "d": "east"}
+        # TODO: PROCESS COMMAND
 
     def draw_screen(self):
         self.print_this_frame = True
@@ -32,9 +35,6 @@ class Display:
         for row in self.grid:
             char_row = [str(c) for c in row]
             print(''.join(char_row))
-
-    def process_command(self, c):
-        pass
 
     def run(self):
         frame = 0
