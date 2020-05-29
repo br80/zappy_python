@@ -27,7 +27,7 @@ class Display:
         for i in range(self.num_rows):
           self.grid.append(["."] * self.num_cols)
 
-        self.ball = Object("o", 0, 5, self)
+        self.ball = Object("o", 5, 5, self)
 
     def process_command(self, c):
         directions = {"w": "north", "a": "west", "s": "south", "d": "east"}
@@ -52,14 +52,9 @@ class Display:
 
         game_start = time.time()
 
-        while self.running:
+        last_c = "NO CHARS"
 
-            # Print is expensive.
-            # Only print if there have been
-            # visual updates.
-            if self.print_this_frame:
-                self.print_screen()
-                self.print_this_frame = False
+        while self.running:
 
             self.frame += 1
             start_time = time.time()
@@ -71,7 +66,21 @@ class Display:
                     break
                 if self.cooldown <= 0:
                     self.process_command(c)
-                # print(c)
+                last_c = c
+                self.print_this_frame = True
+
+            for object in self.objects:
+                object.act(self.frame)
+
+
+            # Print is expensive.
+            # Only print if there have been
+            # visual updates.
+            if self.print_this_frame:
+                self.print_screen()
+                self.print_this_frame = False
+
+                print(f"Last character is: [{last_c}]")
 
             wait_time = max([0, frame_time - (time.time() - start_time)])
             time.sleep(wait_time)
