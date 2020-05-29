@@ -7,7 +7,7 @@ Code should always be written in a way that promotes readability.
     - Guido Van Rossum, creator of Python
 ```
 
-Clean and simple, it is an ideal beginning programming language. Powerful and flexible, it is the primary tool of choice for millions of researchers, data scientists, web developers, hackers and more.
+Clean and simple, it is an ideal beginning programming language. Powerful and flexible, it is the primary tool of choice for millions of expert researchers, data scientists, web developers, hackers and more.
 
 In this video series, we will be covering all the basics you need to get started with Python code. By the end, you'll be able to read and write the code to build a simple graphical adventure game:
 
