@@ -3,6 +3,7 @@ import time
 import os
 import kbhit # https://simondlevy.academic.wlu.edu/files/software/kbhit.py
 
+from object import Object
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -18,9 +19,12 @@ class Display:
 
         self.cooldown = 1
 
+        self.objects = []
         self.grid = []
         for i in range(10):
           self.grid.append(["."] * 20)
+
+        self.ball = Object("o", 0, 5, self)
 
     def process_command(self, c):
         directions = {"w": "north", "a": "west", "s": "south", "d": "east"}
@@ -31,7 +35,6 @@ class Display:
 
     def print_screen(self):
         clear_screen()
-        print("")
         for row in self.grid:
             char_row = [str(c) for c in row]
             print(''.join(char_row))
