@@ -1,6 +1,11 @@
 # Python
 
-Python is an amazing programming language.
+```
+Code is read more often than it is written.
+Code should always be written in a way that promotes readability.
+
+    - Guido Van Rossum, creator of Python
+```
 
 Clean and simple, it is an ideal beginning programming language. Powerful and flexible, it is the primary tool of choice for millions of researchers, data scientists, web developers, hackers and more.
 
