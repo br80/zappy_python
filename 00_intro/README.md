@@ -68,7 +68,7 @@ You can open the terminal in the directory itself using VSCode (Windows) or CTRL
 * `cd ..` - Change to the previous directory
 * `cd ~` - Change to the home directory
 
-Try downloading the `intro.py` file and running it from the Terminal.
+Try downloading the `hello.py` file and running it from the Terminal. It should return "Hello, world!"
 
 ### Interpreter
 
