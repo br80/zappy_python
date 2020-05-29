@@ -9,7 +9,7 @@ Code should always be written in a way that promotes readability.
 
 Clean and simple, it is an ideal beginning programming language. Powerful and flexible, it is the primary tool of choice for millions of researchers, data scientists, web developers, hackers and more.
 
-In this video series, we will be covering all the basics you need to get started with Python code. By the end, you'll be able to read and write the code to build a simple graphical adventure game:
+In this video series, we will be covering all the basics you need to get started with Python code. By the end, you'll be able to read and write enough code to build a simple graphical adventure game:
 
 ![Python Game](/00_intro/img/PythonRogue.gif)
 
@@ -17,7 +17,7 @@ In this video series, we will be covering all the basics you need to get started
 
 Are you a fast learner, new to programming and looking for the shortest path to making cool games? This series is for you.
 
-Are you studying programming in school but bored building todo lists and calculators? This series is for you.
+Are you studying programming in school but bored building to-do lists and calculators? This series is for you.
 
 Are you experienced in another programming language but curious about the power, flexibility and fun of Python? This series is for you.
 
