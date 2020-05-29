@@ -8,13 +8,14 @@
 * Time
   * Sleep
 
-* Input
-  * KBHit
-  * Screen clearn
+* Animation
 
+* Clear Screen
+  * Google
 
-
-
+  * Input
+    * KBHit
+    * Screen clearn
 
 
 ### Nested loops
