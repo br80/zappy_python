@@ -155,13 +155,6 @@ class Game:
 
         while self.running:
 
-            # Print is expensive.
-            # Only print if there have been
-            # visual updates.
-            if self.print_this_frame:
-                self.print_screen()
-                self.print_this_frame = False
-
             self.frame += 1
             start_time = time.time()
             if self.player.cooldown > 0:
@@ -177,6 +170,14 @@ class Game:
                 enemy.act(self.frame)
             for weapon in self.weapons:
                 weapon.act(self.frame)
+
+            # Print is expensive.
+            # Only print if there have been
+            # visual updates.
+            if self.print_this_frame:
+                self.print_screen()
+                self.print_this_frame = False
+
             wait_time = max([0, frame_time - (time.time() - start_time)])
             time.sleep(wait_time)
 
