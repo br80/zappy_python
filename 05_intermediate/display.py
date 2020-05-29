@@ -19,16 +19,20 @@ class Display:
 
         self.cooldown = 1
 
+        self.num_rows = 10
+        self.num_cols = 20
+
         self.objects = []
         self.grid = []
-        for i in range(10):
-          self.grid.append(["."] * 20)
+        for i in range(self.num_rows):
+          self.grid.append(["."] * self.num_cols)
 
         self.ball = Object("o", 0, 5, self)
 
     def process_command(self, c):
         directions = {"w": "north", "a": "west", "s": "south", "d": "east"}
-        # TODO: PROCESS COMMAND
+        if c in directions:
+            self.ball.move(directions[c])
 
     def draw_screen(self):
         self.print_this_frame = True
@@ -67,6 +71,7 @@ class Display:
                     break
                 if self.cooldown <= 0:
                     self.process_command(c)
+                # print(c)
 
             wait_time = max([0, frame_time - (time.time() - start_time)])
             time.sleep(wait_time)
