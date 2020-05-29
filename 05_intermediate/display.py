@@ -22,7 +22,6 @@ class Display:
         self.num_rows = 20
         self.num_cols = 50
 
-        self.objects = []
         self.grid = []
         for i in range(self.num_rows):
           self.grid.append(["."] * self.num_cols)
@@ -68,10 +67,6 @@ class Display:
                     self.process_command(c)
                 last_c = c
                 self.print_this_frame = True
-
-            for object in self.objects:
-                object.act(self.frame)
-
 
             # Print is expensive.
             # Only print if there have been
