@@ -18,7 +18,11 @@ Let's review what we've learned so far:
 Not bad! We can do a lot with this. Let's put these together to make a very simple graphics display which we will turn into an adventure game next lesson.
 
 
-## 2D lists
+## Intermediate list techniques
+
+Let's build on our knowledge of lists with some more techniques.
+
+### 2D lists
 
 We've learned how to work with Python lists in a previous lesson. We can create a 2-dimensional grid out of a list of lists.
 
@@ -69,6 +73,51 @@ for row in nums:
 ```
 
 
+### List comprehensions
+
+List comprehensions are a handy way to filter and formatting to every item in a list. For example, let's take a list of numbers, filter out everything that's less than 12, then turn it into a string.
+
+```python
+nums = [0, 5, 10, 15, 20]
+[str(num) for num in nums if num >= 12]
+# ['15', '20']
+```
+
+We can break these up into 3 parts:
+
+1. Formatting: `str(num)`
+2. Collection: `for num in nums`
+3. Filter: `if num >= 12`
+
+It may help to read the comprehension like, "Stringify each number in the nums list if that number is greater than or equal to 12."
+
+
+### Join
+
+We can join all the elements of a list with the `join()` function.
+
+```python
+names = ["Alice", "Bob", "Charlie", "Dan", "Eve"]
+" - ".join(names)
+# 'Alice - Bob - Charlie - Dan - Eve'
+".".join(names)
+# 'Alice.Bob.Charlie.Dan.Eve'
+```
+
+The string at the front of the expression is what's inserted between each element in the list. Note that this doesn't work for non strings, but we can change each element to a string with a list comprehension.
+
+```python
+nums = [1, 2, 3, 4, 5]
+", ".join(nums)  # Cannot join integers
+# Traceback (most recent call last):
+#   File "<stdin>", line 1, in <module>
+# TypeError: sequence item 0: expected str instance, int found
+
+", ".join([str(num) for num in nums])  # Comprehension turns ints into strings
+# '1, 2, 3, 4, 5'
+```
+
+
 ## Time, sleep
 
 Timing is crucial for games and animation. We can import Python's `time` module to help us build our graphics display.
@@ -99,6 +148,30 @@ print(f"Slept for {end_time - start_time} seconds.")
 # Slept for 5.006947994232178 seconds.
 ```
 
+Not exact, but pretty close.
+
+
+
+## Print grid
+
+We can combine our 2D list with the `print()` function to print out our grid.
+
+
+
+
+
+## Clear screen
+
+Clearing all text on the screen in Windows is done using the `os` module by calling `os.system('cls')` and on every other operating system using `os.system('clear')`. We can make this work on every OS with the following code.
+
+```python
+import os
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+```
+
+'nt' is Python's identifier for Windows OS.
 
 
 
@@ -106,9 +179,6 @@ print(f"Slept for {end_time - start_time} seconds.")
 
 
 
-* 2D arrays
-
-* Nested Loops
 
 * Time
   * Sleep
@@ -118,46 +188,8 @@ print(f"Slept for {end_time - start_time} seconds.")
 
   * Input
     * KBHit
-    * Screen clearn
+    * Screen clear
 
 
-### Nested loops
-
-You can nest lists, dictionaries, and values together as deep as you like.
-
-```python
-alice =  {'name': 'alice', 'age': 21, 'height': 61, 'friends': ['bob', 'dan']}
-bob = {'name': 'bob', 'age': 20, 'height': 64, 'friends': ['alice', 'charlie']}
-charlie =  {'name': 'charlie', 'age': 21, 'height': 63, 'friends': ['bob']}
-dan =  {'name': 'dan', 'age': 22, 'height': 66, 'friends': ['alice', 'bob']}
-
-people = {'alice': alice, 'bob': bob, 'charlie': charlie, 'dan': dan}
-# {
-# 'alice': {'name': 'alice', 'age': 21, 'height': 61, 'friends': ['bob', 'dan']},
-# 'bob': {'name': 'bob', 'age': 20, 'height': 64, 'friends': ['alice', 'charlie']},
-# 'charlie': {'name': 'charlie', 'age': 21, 'height': 63, 'friends': ['bob']},
-# 'dan': {'name': 'dan', 'age': 22, 'height': 66, 'friends': ['alice', 'bob']}
-# }
-```
-
-You can run nested loops as well.
-
-```python
-for person in people:
-    print(f'{person} is friends with:')
-    for friend in people[person]['friends']:
-        print(f'  {friend}')
-# alice is friends with:
-#   bob
-#   dan
-# bob is friends with:
-#   alice
-#   charlie
-# charlie is friends with:
-#   bob
-# dan is friends with:
-#   alice
-#   bob
-```
 
 
