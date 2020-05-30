@@ -238,7 +238,7 @@ Python has a built-in function to capture input:
 name = input("Type your name: ")
 ```
 
-This will wait for the user to type a name and hit ENTER, then set the 'name' variable to whatever the user typed. If we want to capture input without waiting for ENTER, we'll need to implement some new functionality. Fortunately, the Python community is very helpful and we can find a solution to this with a quick search online. We will be using the [kbhit module](/kbhit.py), written by [Simon D. Levy](https://simondlevy.academic.wlu.edu/files/software/kbhit.py).
+This will wait for the user to type a name and hit ENTER, then set the 'name' variable to whatever the user typed. If we want to capture input without waiting for ENTER, we'll need to implement some new functionality. Fortunately, the Python community is very helpful and we can find a solution to this with a quick search online. We will be using the [kbhit module](./kbhit.py), written by [Simon D. Levy](https://simondlevy.academic.wlu.edu/files/software/kbhit.py).
 
 ```python
 
