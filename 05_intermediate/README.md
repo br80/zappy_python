@@ -30,7 +30,6 @@ We've learned how to work with Python lists in a previous lesson. We can create 
 nums = [[1, 2, 3],
         [4, 5, 6],
         [7, 8, 9]]
-
 ```
 
 Here we have a list called nums, which contains three other lists. We can access each row by index:
@@ -70,6 +69,34 @@ for row in nums:
 # 7
 # 8
 # 9
+```
+
+### Initializing lists with `*`
+
+You can create large lists using the multiplication (`*`) operator.
+
+```python
+['x'] * 10  # Creates a list with 10 'x'
+# ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
+```
+
+You can use this to create a grid with set dimensions.
+
+```python
+rows = 5
+cols = 10
+
+# Create a grid with 5 rows and 10 columns
+grid = []
+for i in range(rows):
+    grid.append(['x'] * cols)
+
+# [['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
+#  ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
+#  ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
+#  ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
+#  ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']]
+
 ```
 
 
@@ -154,8 +181,36 @@ Not exact, but pretty close.
 
 ## Print grid
 
-We can combine our 2D list with the `print()` function to print out our grid.
+We can combine our 2D list with the `print()` function to print out a 2D list.
 
+```python
+rows = 5
+cols = 10
+
+grid = []
+for i in range(rows):
+    grid.append(['x'] * cols)
+
+for row in grid:
+    print(row)
+# ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
+# ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
+# ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
+# ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
+# ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
+```
+
+We can make it look nicer with `join()`
+
+```python
+for row in grid:
+    print(" ".join(row))
+# x x x x x x x x x x
+# x x x x x x x x x x
+# x x x x x x x x x x
+# x x x x x x x x x x
+# x x x x x x x x x x
+```
 
 
 
