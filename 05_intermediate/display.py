@@ -13,11 +13,7 @@ class Display:
 
     def __init__(self):
 
-        self.framerate = 24
-        self.frame = 0
         self.running = True
-
-        self.cooldown = 1
 
         self.rows = 10
         self.cols = 20
@@ -26,68 +22,43 @@ class Display:
         for i in range(self.rows):
           self.grid.append(["."] * self.cols)
 
-        self.ball = Object("o", 5, 5, self)
+        self.obj = Object("o", 5, 5, self)
 
     def process_command(self, c):
         directions = {"w": "north", "a": "west", "s": "south", "d": "east"}
         if c in directions:
-            self.ball.move(directions[c])
-
-    def draw_screen(self):
-        self.print_this_frame = True
+            self.obj.move(directions[c])
 
     def print_screen(self):
         clear_screen()
         for row in self.grid:
             char_row = [str(c) for c in row]
-            print(''.join(char_row))
+            print(' '.join(char_row))
+        print("Type `q` to quit")
 
     def run(self):
-        frame = 0
-        t = time.time()
-        frame_time = 1 / self.framerate
-
-        kb = kbhit.KBHit()
-
-        game_start = time.time()
-
-        last_c = "NO CHARS"
-
-        while self.running:
-
-            self.frame += 1
-            start_time = time.time()
-            if self.cooldown > 0:
-                self.cooldown -= 1
-            if kb.kbhit():
-                c = kb.getch()
-                if ord(c) == 27: # ESC
-                    break
-                if self.cooldown <= 0:
-                    self.process_command(c)
-                last_c = c
-                self.print_this_frame = True
-
-            # Print is expensive.
-            # Only print if there have been
-            # visual updates.
-            if self.print_this_frame:
-                self.print_screen()
-                self.print_this_frame = False
-
-                print(f"Last character is: [{last_c}]")
-
-            wait_time = max([0, frame_time - (time.time() - start_time)])
-            time.sleep(wait_time)
 
         self.print_screen()
 
-        kb.set_normal_term()
+        kb = kbhit.KBHit()
+
+        while self.running:
+
+            if kb.kbhit():
+                c = kb.getch()
+                if c == "q":  # Hit `q` to break out of the loop
+                    break
+                self.process_command(c)
+                last_c = c
+
+                self.print_screen()
+                print(f"Last character is: [{last_c}]")
+
+        kb.set_normal_term()  # Reset terminal to normal
 
 
 
 
 d = Display()
-d.draw_screen()
 d.run()
 

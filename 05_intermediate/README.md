@@ -21,10 +21,9 @@ To do that, we will implement the following:
 
 1. Create a grid of pixels
 2. Print the pixel grid to the terminal
-3. Accept keyboard inputs to update the grid
+3. Process keyboard inputs to update the grid
 4. Update the pixel grid with changes
 5. Clear the screen between updates
-6. Time updates for a steady framerate
 
 
 ## More list techniques
@@ -163,38 +162,6 @@ nums = [1, 2, 3, 4, 5]
 ```
 
 
-## time() and sleep()
-
-Timing is crucial for games and animation. We can import Python's `time` module to help us build our graphics display.
-
-```python
-import time
-
-time.time() # The number of seconds since Jan 1, 1970
-# 1590861260.771779
-```
-
-Let's wait a few seconds.
-
-```python
-time.time()
-# 1590861311.3672168
-```
-
-Notice that the value of `time.time()` changed after some time had passed. We can also use the `time.sleep()` function to make Python pause for some amount of time.
-
-```python
-start_time = time.time()
-# 1590861459.577342
-time.sleep(5)
-end_time = time.time()
-# 1590861464.58429
-print(f"Slept for {end_time - start_time} seconds.")
-# Slept for 5.006947994232178 seconds.
-```
-
-Not exact, but pretty close.
-
 
 ## Print grid
 
@@ -230,60 +197,6 @@ for row in grid:
 ```
 
 
-## Keyboard input
-
-Python has a built-in function to capture input:
-
-```python
-name = input("Type your name: ")
-```
-
-This will wait for the user to type a name and hit ENTER, then set the 'name' variable to whatever the user typed. If we want to capture input without waiting for ENTER, we'll need to implement some new functionality. Fortunately, the Python community is very helpful and we can find a solution to this with a quick search online. We will be using the [kbhit module](./kbhit.py), written by [Simon D. Levy](https://simondlevy.academic.wlu.edu/files/software/kbhit.py).
-
-```python
-
-```
-
-Every coder borrows code online and is usually highly encouraged. Be sure to check the licenses and give credit when you do!
-
-## Rendering objects
-
-Let's create a class to represent our grid display.
-
-```python
-class Display:
-
-    def __init__(self):
-        self.rows = 5
-        self.cols = 10
-
-        self.grid = []
-        for i in range(self.rows):
-          self.grid.append(["x"] * self.cols)
-
-    def print_screen(self):
-        for row in self.grid:
-            print(''.join(row))
-```
-
-Now let's create an object to render:
-
-```python
-class Object:
-    def __init__(self, character, row, col, display):
-        self.display_char = character
-        self.row = row
-        self.col = col
-
-        self.display = display
-        self.display.grid[row][col] = self
-
-    def __str__(self):
-        return self.display_char
-
-```
-
-
 
 ## Clear screen
 
@@ -299,22 +212,157 @@ def clear_screen():
 'nt' is Python's identifier for Windows OS.
 
 
+## Keyboard input
 
+Python has a built-in function to capture input:
 
+```python
+name = input("Type your name: ")
+```
 
+This will wait for the user to type a name and hit ENTER, then set the 'name' variable to whatever the user typed. If we want to capture input without waiting for ENTER, we'll need to implement some new functionality. Fortunately, the Python community is very helpful and we can find a solution to this with a quick search online. We will be using the [kbhit module](./kbhit.py), written by [Simon D. Levy](https://simondlevy.academic.wlu.edu/files/software/kbhit.py).
 
+Every coder borrows code online and is usually highly encouraged. Be sure to check the licenses and give credit when you do!
 
+```python
+# test.py
+import kbhit
+import os
 
-* Time
-  * Sleep
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
-* Clear Screen
-  * Google
+kb = kbhit.KBHit()
 
-  * Input
-    * KBHit
-    * Screen clear
+last_c = "NONE"
 
+clear_screen()
 
+while True:
+    if kb.kbhit():
+        c = kb.getch()
+        if c == "q":  # Hit `q` to break out of the loop
+            break
+        last_c = c
+    clear_screen()
+    print(last_c)
+```
 
+Check out this code in `test.py` which will clear the screen and print out the last character typed. Try it out!
+
+You may notice some flickering because the screen is being cleared and printed so frequently. You can fix this by printing only when there is an update by indenting `clear_screen()` and `print(last_c)` into the `if` block.
+
+```python
+while True:
+    if kb.kbhit():
+        c = kb.getch()
+        if c == "q":  # Hit `q` to break out of the loop
+            break
+        last_c = c
+        clear_screen()
+        print(last_c)
+```
+
+## Rendering objects
+
+First let's create an object to render:
+
+```python
+class Object:
+    def __init__(self, character, row, col, display):
+        self.display_char = character
+        self.row = row
+        self.col = col
+
+        self.display = display
+        self.display.grid[row][col] = self
+
+    def __str__(self):
+        # This is what's displayed when rendered in the grid
+        return self.display_char
+```
+
+Let's create a class to represent our grid display.
+
+```python
+import os
+import kbhit
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+class Display:
+
+    def __init__(self):
+        self.rows = 5
+        self.cols = 10
+
+        self.grid = []
+        for i in range(self.rows):
+          self.grid.append(["."] * self.cols)
+
+        self.obj = Object("o", 3, 3, d)
+
+    def print_screen(self):
+        # First, clear the screen
+        clear_screen()
+        # Then print each row in the grid
+        for row in self.grid:
+            char_row = [str(c) for c in row]
+            print(' '.join(char_row))
+
+    def run(self):
+        self.print_screen()
+
+```
+
+Now let's create and run the display.
+
+```python
+d = Display()
+d.run()
+
+# . . . . . . . . . .
+# . . . . . . . . . .
+# . . . . . . . . . .
+# . . . o . . . . . .
+# . . . . . . . . . .
+```
+
+## Moving objects on the grid
+
+Finally, let's use our `kbhit` module to move the object with WASD keys. Add this to your Display class:
+
+```python
+def process_command(self, c):
+    directions = {"w": "north", "a": "west", "s": "south", "d": "east"}
+    if c in directions:
+          self.obj.move(directions[c])
+```
+
+With "WASD" commands, 'w' is north, 'a' is west, 's' is south and 'd' is east. This dictionary provides a handy mapping for these commands.
+
+The last step is to implement the `move()` command in the object.
+
+```python
+def move(self, direction):
+    # Set the current position to empty
+    self.display.grid[self.row][self.col] = "."
+    # If we're not in the top row, move up one row
+    if direction == "north" and self.row > 0:
+        row -= 1
+    # If we're not in the last row, move down one row
+    elif direction == "south" and self.row < self.display.rows - 1:
+        row += 1
+    # If we're not in the far-left column, move left one column
+    elif direction == "west" and self.col > 0:
+        col -= 1
+    # If we're not in the far-right column, move right one column
+    elif direction == "east" and self.col < self.display.cols - 1:
+        col += 1
+    # Put ourself in the updated grid position
+    self.display.grid[self.row][self.col] = self
+```
+
+Now try running `display.py` to move your object around the grid!
 

@@ -13,20 +13,19 @@ class Object:
 
 
     def move(self, direction):
-        row = self.row
-        col = self.col
-        display = self.display
-        grid = display.grid
-        grid[row][col] = "."
-        if direction == "north" and row > 0:
-            row -= 1
-        elif direction == "south" and row < self.display.rows - 1:
-            row += 1
-        elif direction == "west" and col > 0:
-            col -= 1
-        elif direction == "east" and col < self.display.cols - 1:
-            col += 1
-        self.row = row
-        self.col = col
-        grid[row][col] = self
-        display.draw_screen()
+        # Set the current position to empty
+        self.display.grid[self.row][self.col] = "."
+        # If we're not in the top row, move up one row
+        if direction == "north" and self.row > 0:
+            self.row -= 1
+        # If we're not in the last row, move down one row
+        elif direction == "south" and self.row < self.display.rows - 1:
+            self.row += 1
+        # If we're not in the far-left column, move left one column
+        elif direction == "west" and self.col > 0:
+            self.col -= 1
+        # If we're not in the far-right column, move right one column
+        elif direction == "east" and self.col < self.display.cols - 1:
+            self.col += 1
+        # Put ourself in the updated grid position
+        self.display.grid[self.row][self.col] = self
