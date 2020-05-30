@@ -20,11 +20,11 @@ class Object:
         grid[row][col] = "."
         if direction == "north" and row > 0:
             row -= 1
-        elif direction == "south" and row < self.display.num_rows - 1:
+        elif direction == "south" and row < self.display.rows - 1:
             row += 1
         elif direction == "west" and col > 0:
             col -= 1
-        elif direction == "east" and col < self.display.num_cols - 1:
+        elif direction == "east" and col < self.display.cols - 1:
             col += 1
         self.row = row
         self.col = col

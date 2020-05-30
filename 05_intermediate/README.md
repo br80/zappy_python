@@ -17,8 +17,17 @@ Let's review what we've learned so far:
 
 Not bad! We can do a lot with this. Let's put these together to make a very simple graphics display which we will turn into an adventure game next lesson.
 
+To do that, we will implement the following:
 
-## Intermediate list techniques
+1. Create a grid of pixels
+2. Print the pixel grid to the terminal
+3. Accept keyboard inputs to update the grid
+4. Update the pixel grid with changes
+5. Clear the screen between updates
+6. Time updates for a steady framerate
+
+
+## More list techniques
 
 Let's build on our knowledge of lists with some more techniques.
 
@@ -187,7 +196,6 @@ print(f"Slept for {end_time - start_time} seconds.")
 Not exact, but pretty close.
 
 
-
 ## Print grid
 
 We can combine our 2D list with the `print()` function to print out a 2D list.
@@ -222,8 +230,58 @@ for row in grid:
 ```
 
 
+## Keyboard input
 
+Python has a built-in function to capture input:
 
+```python
+name = input("Type your name: ")
+```
+
+This will wait for the user to type a name and hit ENTER, then set the 'name' variable to whatever the user typed. If we want to capture input without waiting for ENTER, we'll need to implement some new functionality. Fortunately, the Python community is very helpful and we can find a solution to this with a quick search online. We will be using the [kbhit module](/kbhit.py), written by [Simon D. Levy](https://simondlevy.academic.wlu.edu/files/software/kbhit.py).
+
+```python
+
+```
+
+Every coder borrows code online and is usually highly encouraged. Be sure to check the licenses and give credit when you do!
+
+## Rendering objects
+
+Let's create a class to represent our grid display.
+
+```python
+class Display:
+
+    def __init__(self):
+        self.rows = 5
+        self.cols = 10
+
+        self.grid = []
+        for i in range(self.rows):
+          self.grid.append(["x"] * self.cols)
+
+    def print_screen(self):
+        for row in self.grid:
+            print(''.join(row))
+```
+
+Now let's create an object to render:
+
+```python
+class Object:
+    def __init__(self, character, row, col, display):
+        self.display_char = character
+        self.row = row
+        self.col = col
+
+        self.display = display
+        self.display.grid[row][col] = self
+
+    def __str__(self):
+        return self.display_char
+
+```
 
 
 

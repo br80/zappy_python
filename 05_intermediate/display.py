@@ -19,12 +19,12 @@ class Display:
 
         self.cooldown = 1
 
-        self.num_rows = 10
-        self.num_cols = 20
+        self.rows = 10
+        self.cols = 20
 
         self.grid = []
-        for i in range(self.num_rows):
-          self.grid.append(["."] * self.num_cols)
+        for i in range(self.rows):
+          self.grid.append(["."] * self.cols)
 
         self.ball = Object("o", 5, 5, self)
 
