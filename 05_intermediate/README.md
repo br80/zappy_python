@@ -1,4 +1,4 @@
-# Project
+# Display
 
 Let's review what we've learned so far:
 
@@ -15,9 +15,19 @@ Let's review what we've learned so far:
 * Dictionaries
 * CSVs
 
-Not bad! We can do a lot with this. Let's put these together to make a very simple graphics engine which we will turn into an adventure game next lesson.
+Not bad! We can do a lot with this. Let's put these together to make a very simple graphics display which we will turn into an adventure game next lesson.
 
 
+## 2D lists
+
+We've learned how to work with Python lists in a previous lesson. We can create a 2-dimensional grid out of a list of lists.
+
+```python
+nums = [[1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]]
+
+grid = [a, b, c]
 
 
 
