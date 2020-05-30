@@ -19,8 +19,8 @@ class Display:
 
         self.cooldown = 1
 
-        self.num_rows = 20
-        self.num_cols = 50
+        self.num_rows = 10
+        self.num_cols = 20
 
         self.grid = []
         for i in range(self.num_rows):

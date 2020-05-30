@@ -1,3 +1,40 @@
+# Project
+
+Let's review what we've learned so far:
+
+* Variables
+* Printing
+* Strings
+* Comments
+* Arithmetic/Logic
+* Conditionals
+* Functions
+* Imports
+* Lists
+* Loops
+* Dictionaries
+* CSVs
+
+Not bad! We can do a lot with this. Let's put these together to make a very simple graphics engine which we will turn into an adventure game next lesson.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 * 2D arrays
 
