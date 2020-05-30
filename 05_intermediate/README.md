@@ -32,13 +32,15 @@ nums = [[1, 2, 3],
         [7, 8, 9]]
 ```
 
-Here we have a list called nums, which contains three other lists. We can access each row by index:
+Here we have a list called `nums`, which contains three other lists. We can access each row by index:
 
 ```python
 nums[0] # First row
 # [1, 2, 3]
+
 nums[1] # Second row
 # [4, 5, 6]
+
 nums[2] # Third row
 # [7, 8, 9]
 ```
@@ -48,8 +50,10 @@ We can access the columns in each row with a second set of square brackets like 
 ```python
 nums[0][1] # First row, second column
 # 2
+
 nums[1][2] # Second row, third column
 # 6
+
 nums[2][0] # Third row, first column
 # 7
 ```
@@ -76,11 +80,11 @@ for row in nums:
 You can create large lists using the multiplication (`*`) operator.
 
 ```python
-['x'] * 10  # Creates a list with 10 'x'
+['x'] * 10  # Creates a list with 10 x's
 # ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
 ```
 
-You can use this to create a grid with set dimensions.
+You can use this to create a 2D grid.
 
 ```python
 rows = 5
@@ -106,15 +110,17 @@ List comprehensions are a handy way to filter and formatting to every item in a 
 
 ```python
 nums = [0, 5, 10, 15, 20]
+
+# Stringify each number in the nums list if that number is greater than or equal to 12.
 [str(num) for num in nums if num >= 12]
 # ['15', '20']
 ```
 
 We can break these up into 3 parts:
 
-1. Formatting: `str(num)`
-2. Collection: `for num in nums`
-3. Filter: `if num >= 12`
+1. **Formatting:** `str(num)`
+2. **Collection:** `for num in nums`
+3. **Filter:**     `if num >= 12`
 
 It may help to read the comprehension like, "Stringify each number in the nums list if that number is greater than or equal to 12."
 
@@ -125,8 +131,10 @@ We can join all the elements of a list with the `join()` function.
 
 ```python
 names = ["Alice", "Bob", "Charlie", "Dan", "Eve"]
+
 " - ".join(names)
 # 'Alice - Bob - Charlie - Dan - Eve'
+
 ".".join(names)
 # 'Alice.Bob.Charlie.Dan.Eve'
 ```
@@ -135,7 +143,8 @@ The string at the front of the expression is what's inserted between each elemen
 
 ```python
 nums = [1, 2, 3, 4, 5]
-", ".join(nums)  # Cannot join integers
+
+", ".join(nums)  # Can only join strings, not integers
 # Traceback (most recent call last):
 #   File "<stdin>", line 1, in <module>
 # TypeError: sequence item 0: expected str instance, int found
@@ -145,7 +154,7 @@ nums = [1, 2, 3, 4, 5]
 ```
 
 
-## Time, sleep
+## time() and sleep()
 
 Timing is crucial for games and animation. We can import Python's `time` module to help us build our graphics display.
 
@@ -211,6 +220,9 @@ for row in grid:
 # x x x x x x x x x x
 # x x x x x x x x x x
 ```
+
+
+
 
 
 
