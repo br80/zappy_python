@@ -18,8 +18,8 @@ Just a few more features and we've got our game!
     * Win condition
     * Add gold when collected
 * Collision handling
-* Unique graphics for each object
 * Load maps from CSV
+* Unique graphics for each object
 
 
 ## Framerate
@@ -79,7 +79,7 @@ time.sleep(wait_time)
 
 ## New object types
 
-We'll be creating the following objects, which inherit from the base `GameObject` class in `object.py`:
+We'll be creating the following objects, which inherit from the base `GameObject` class in [object.py](./object.py):
 
 * [Player](./player.py)
 * [Enemy](./enemy.py)
@@ -88,6 +88,8 @@ We'll be creating the following objects, which inherit from the base `GameObject
 * [Weapon](./weapon.py)
 * [Barrier](./barrier.py)
 * [Treasure](./treasure.py)
+
+Start with [object.py](./object.py), then take a look at each of these files and try to understand how they extend the base object functionality. Remember Guido Van Rossum's quote, "Code is read more often than it is written."
 
 
 ## Collisions
@@ -101,11 +103,54 @@ Start by thinking of the logic in plain English.
 * If a player collides with a treasure, the treasure is collected
 * Nothing can collide with a barrier
 
-..and so on. The Python code to accomplish this is very similar:
+..and so on. The Python code to accomplish this is very similar. For example, take default collision handler in the base `GameObject` class:
+
+```python
+if collision_object == "  ":
+    # Empty spaces are fine.
+    return True
+elif collision_object.type == "BARRIER":
+    # Nothing can walk through a barrier
+    return False
+elif collision_object.type == "WEAPON":
+    # Anything that walks into a weapon will die
+    self.die()
+    return False
+```
+
+The best Python code is intuitive and readable and the logic should be easily readable by humans.
+
+## Loading maps from CSV
+
+Start by creating a map in your favorite spreadsheet program.
+
+![Python Game CSV](./img/maze_map_csv.jpg)
+
+(Note that the colors will not be exported to the CSV. All that matters is the character.)
+
+Exporting this will give you [maze_map.csv](./data/maze_map.csv) which will be loaded into the game using the same CSV import code from our previous lesson.
+
+![Python Game ASCII](./img/maze_game_display.jpg)
+
+## Graphics
+
+The graphics for each unit are loaded from the `Graphics` class in [graphics.py](./graphics.py). Notice there are two categories for each unit: "ascii" and "emoji".
+
+```python
+"SNAKE": {
+    "ascii": "S ",
+    "emoji": "🐍"
+}
+```
+Default is "ascii" but you can change this in the game constructor by modifying this line:
+
+```python
+self.graphics = Graphics("emoji", self)
+```
+
+![Python Game Emoji](./img/maze_game_emoji.jpg)
 
 
-
-
-
+Terminal emojis may not be supported by all platforms but give it a try! Ascii should work on every platform.
 
 
