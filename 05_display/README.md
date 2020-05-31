@@ -227,7 +227,7 @@ This will wait for the user to type a name and hit ENTER, then set the 'name' va
 Every coder borrows code online and is usually highly encouraged. Be sure to check the licenses and give credit when you do!
 
 ```python
-# test.py
+# keyboard_test.py
 import kbhit
 import os
 
@@ -252,7 +252,7 @@ while running:
     print(last_c)
 ```
 
-Check out this code in `test.py` which will clear the screen and print out the last character typed. Try it out!
+Check out this code in `keyboard_test.py` which will clear the screen and print out the last character typed. Try it out!
 
 You may notice some flickering because the screen is being cleared and printed so frequently. You can fix this by printing only when there is an update by indenting `clear_screen()` and `print(last_c)` into the `if` block.
 
