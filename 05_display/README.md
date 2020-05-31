@@ -200,19 +200,6 @@ for row in grid:
 
 
 
-## Clear screen
-
-Clearing all text on the screen in Windows is done using the `os` module by calling `os.system('cls')` and on every other operating system using `os.system('clear')`. We can make this work on every OS with the following code.
-
-```python
-import os
-
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
-```
-
-`'nt'` is Python's identifier for Windows.
-
 
 ## Keyboard input
 
@@ -266,6 +253,20 @@ while running:
         clear_screen()
         print(last_c)
 ```
+
+## Clear screen
+
+Clearing all text on the screen in Windows is done using the `os` module by calling `os.system('cls')` and on every other operating system using `os.system('clear')`. We can make this work on every OS with the following code.
+
+```python
+import os
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+```
+
+`'nt'` is Python's identifier for Windows.
+
 
 ## Rendering objects
 
