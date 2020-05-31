@@ -81,13 +81,13 @@ time.sleep(wait_time)
 
 We'll be creating the following objects, which inherit from the base `GameObject` class in `object.py`:
 
-* Player
-* Enemy
-  * Goblin
-  * Snake
-* Weapon
-* Barrier
-* Treasure
+* [Player](./player.py)
+* [Enemy](./enemy.py)
+  * [Goblin](./goblin.py)
+  * [Snake](./snake.py)
+* [Weapon](./weapon.py)
+* [Barrier](./barrier.py)
+* [Treasure](./treasure.py)
 
 
 ## Collisions
