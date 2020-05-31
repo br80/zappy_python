@@ -24,7 +24,7 @@ A few more features and we're done!
 * Unique graphics for each object
 
 
-## Framerate
+## Timing
 
 Timing is crucial for games and animation. We can import Python's `time` module to help us build our graphics display.
 
