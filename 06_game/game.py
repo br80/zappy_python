@@ -60,8 +60,8 @@ class Game:
 
         # Debug Messages
         self.show_debug = False  # Turn this on to display debug messages
-        self.debug_prints = 0
-        self.debug_fps = 0
+        self.debug_prints = 0  # How many times we've refreshed the display
+        self.debug_fps = 0  # Actual frames per second
         self.debug_last_frame_second = 0
         self.frame_at_last_second = 0
 
