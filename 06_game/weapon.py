@@ -3,7 +3,7 @@ from object import GameObject
 
 class Weapon(GameObject):
     def __init__(self, game_id, player_row, player_col, facing, lifetime, size, game):
-        # TODO: Inherit 
+        # TODO: Inherit
         self.game_id = game_id
         self.icon = game.graphics.get_icon(game_id)
         self.type = "WEAPON"
@@ -23,9 +23,13 @@ class Weapon(GameObject):
                 game.grid[self.row][self.col] = self
                 self.frame_to_destroy = game.frame + lifetime
                 game.draw_screen()
+
+                # If weapon size is greater than 1, keep spawning weapons
                 Weapon(game_id, self.row, self.col, facing, lifetime, size-1, game)
 
     def set_row_col(self, player_row, player_col, facing):
+        # Starting from the origin position, spawn the weapon one block
+        # in the given direction.
         self.row = player_row
         self.col = player_col
         if facing == "north" and player_row > 0:
