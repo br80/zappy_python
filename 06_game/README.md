@@ -22,7 +22,7 @@ Just a few more features and we've got our game!
 * Load maps from CSV
 
 
-## time() and sleep()
+## Framerate
 
 Timing is crucial for games and animation. We can import Python's `time` module to help us build our graphics display.
 
@@ -64,17 +64,45 @@ Even with a framerate of 60fps (.0167 seconds per frame), processing uses up les
 ```python
 frame_time = 1 / self.framerate
 
+# Start of the frame
 start_time = time.time()
 
 # DO ALL PROCESSING FOR CURRENT FRAME
 
+# This will give you how much time has elapsed in the frame
+processing_time = time.time() - start_time
+
 # If frame_time - processing_time is negative, wait_time will be 0
-wait_time = max([0, frame_time - (time.time() - start_time)])
-
+wait_time = max([0, frame_time - processing_time])
 time.sleep(wait_time)
-
-
 ```
+
+## New object types
+
+We'll be creating the following objects, which inherit from the base `GameObject` class in `object.py`:
+
+* Player
+* Enemy
+  * Goblin
+  * Snake
+* Weapon
+* Barrier
+* Treasure
+
+
+## Collisions
+
+Because our game is on a simple grid, we can create a rule that no two objects can share the same position. If they do, we call that a collision which can be handled with some simple logic.
+
+Start by thinking of the logic in plain English.
+
+* If a player collides with an enemy, the player is destroyed
+* If an enemy collides with a weapon, the enemy is destroyed
+* If a player collides with a treasure, the treasure is collected
+* Nothing can collide with a barrier
+
+..and so on. The Python code to accomplish this is very similar:
+
 
 
 
