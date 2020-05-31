@@ -1,4 +1,4 @@
-import kbhit
+import kbhit # https://simondlevy.academic.wlu.edu/files/software/kbhit.py
 import os
 
 def clear_screen():
