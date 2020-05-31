@@ -126,7 +126,7 @@ Start by creating a map in your favorite spreadsheet program.
 
 ![Python Game CSV](./img/maze_map_csv.jpg)
 
-(Note that the colors will not be exported to the CSV. All that matters is the character.)
+(Note that the colors will not be exported to the CSV.)
 
 Exporting this will give you [maze_map.csv](./data/maze_map.csv) which will be loaded into the game using the same CSV import code from our previous lesson.
 
@@ -151,6 +151,6 @@ self.graphics = Graphics("emoji", self)
 ![Python Game Emoji](./img/maze_game_emoji.jpg)
 
 
-Terminal emojis may not be supported by all platforms but give it a try! Ascii should work on every platform.
+Terminal emojis may not be supported by all platforms but give it a try! Ascii will work on every platform.
 
 
