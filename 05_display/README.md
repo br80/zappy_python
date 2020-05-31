@@ -32,7 +32,7 @@ Let's build on our knowledge of lists with some more techniques.
 
 ### 2D lists
 
-We've learned how to work with Python lists in a previous lesson. We can create a 2-dimensional grid out of a list of lists.
+We've learned how to work with Python lists in a previous lesson. We can create a two-dimensional grid out of nested lists.
 
 ```python
 nums = [[1, 2, 3],
