@@ -58,13 +58,6 @@ class Game:
 
         self.show_help = True  # Turn this on to display help messages
 
-        # Debug Messages
-        self.show_debug = False  # Turn this on to display debug messages
-        self.debug_prints = 0  # How many times we've refreshed the display
-        self.debug_fps = 0  # Actual frames per second
-        self.debug_last_frame_second = 0
-        self.frame_at_last_second = 0
-
     # Load the world from CSV
     def load_world(self, world_file=None):
         if world_file is None:
@@ -136,27 +129,12 @@ class Game:
             print("Type `p` to attack.")
             print("Type `q` to quit.")
 
-        if self.show_debug:
-            self.print_debug()
-
     def game_over(self):
         self.running = False
 
     def do_win(self):
         self.win = True
         self.game_over()
-
-    def print_debug(self):
-        # Turn self.show_debug to True to view these messages
-        print(f"Cooldown: {self.player.cooldown}")
-        self.debug_prints += 1
-        print(f"{self.debug_prints} prints")
-        if time.time() - self.debug_last_frame_second > 1:
-            self.debug_last_frame_second = time.time()
-            self.debug_fps = self.frame // self.debug_last_frame_second
-            self.debug_fps = self.frame - self.frame_at_last_second
-            self.frame_at_last_second = self.frame
-        print(f"FPS: {self.debug_fps}")
 
     def run(self):
         # This is how many seconds each frame should take.
