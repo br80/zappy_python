@@ -8,7 +8,7 @@ class Snake(Enemy):
 
     def action(self):
         self.random_move()
-        self.frame_to_act += int(1 * self.speed)
+        self.frame_to_act += int(1 * self.move_speed)
         self.energy -= 1
         if self.energy <= 0:
             self.should_wait = True

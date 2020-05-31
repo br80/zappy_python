@@ -1,5 +1,4 @@
 import random
-from graphics import Graphics
 
 class GameObject():
     def __init__(self, game_id, row, col, game):
@@ -35,25 +34,37 @@ class GameObject():
         if moved:
             self.row = row
             self.col = col
+
+        # As long as the object survived, place it in the grid
         if self.alive:
             grid[self.row][self.col] = self
-        game.draw_screen()
-        return moved
 
+        # If the object moved, draw the screen
+        if moved:
+            game.draw_screen()
+
+    # This is called when the object tries to move
+    # into a new space.
+    # It will return True if the move succeeds
+    # and False otherwise.
     def handle_collision(self, collision_object):
         if collision_object == "  ":
+            # Empty spaces are fine.
             return True
         elif collision_object.type == "BARRIER":
+            # Nothing can walk through a barrier
             return False
         elif collision_object.type == "WEAPON":
+            # Anything that walks into a weapon will die
             self.die()
             return False
+
+        # For object collisions that are not empty, barrier, or a weapon,
+        # call this method.
         return self.object_collision(collision_object)
 
+    # Handle unique collisions. Implemented by child-classes
     def object_collision(self, collision_object):
-        """
-        Default, do nothing
-        """
         return False
 
     def die(self):
