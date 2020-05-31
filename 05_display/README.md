@@ -1,5 +1,7 @@
 # Display
 
+Run the display using `python display.py`.
+
 Let's review what we've learned so far:
 
 * Variables

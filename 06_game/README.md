@@ -1,6 +1,8 @@
 # Game
 
-Just a few more features and we've got our game!
+Run the game using `python game.py`.
+
+A few more features and we're done!
 
 * Framerate
 * New object types
