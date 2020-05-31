@@ -34,7 +34,8 @@ class Display:
         for row in self.grid:
             char_row = [str(c) for c in row]
             print(' '.join(char_row))
-        print("Type `q` to quit")
+        print("Type `w`, `a`, `s`, `d` to move.")
+        print("Type `q` to quit.")
 
     def run(self):
 
