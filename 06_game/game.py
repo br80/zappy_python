@@ -206,7 +206,8 @@ class Game:
             #
             # If it's less than our target frame time, put the display
             # to sleep for that many seconds.
-            wait_time = max([0, frame_time - (time.time() - start_time)])
+            processing_time = time.time() - start_time
+            wait_time = max([0, frame_time - processing_time])
             time.sleep(wait_time)
 
 
