@@ -6,13 +6,24 @@ class Player(GameObject):
     def __init__(self, row, col, game):
         super().__init__("PLAYER", row, col, game)
         self.type = "PLAYER"
-        self.game.grid[row][col] = self
-        self.attack_speed = int(self.game.framerate / 4)  # 1/4 second
-        self.cooldown = 0
-        self.facing = "east"
-        self.weapon_size = 2
-        self.gold = 0
+
+        # Add player to the game
         self.game.player = self
+
+        # How many frames player must wait after attacking to act again.
+        self.attack_speed = int(self.game.framerate / 4)  # 1/4 second
+
+        # Current number of frames to wait.
+        self.cooldown = 0
+
+        # Direction the player is facing
+        self.facing = "east"
+
+        # Number of squares the player's weapon will extend.
+        self.weapon_size = 2
+
+        # This has no purpose other than score.
+        self.gold = 0
 
     def process_command(self, c):
         directions = {"w": "north", "a": "west", "s": "south", "d": "east"}
