@@ -56,7 +56,7 @@ class Game:
         # Load the map from this path
         self.load_world("data/maze_map.csv")
 
-        self.show_help = True  # Turn this on to display help messages
+        self.show_help = False  # Turn this on to display help messages
 
     # Load the world from CSV
     def load_world(self, world_file=None):

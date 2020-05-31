@@ -1,5 +1,3 @@
-import random
-
 class GameObject():
     def __init__(self, game_id, row, col, game):
         self.game_id = game_id
