@@ -11,7 +11,7 @@ Clean and simple, it is an ideal beginning programming language. Powerful and fl
 
 In this video series, we will be covering all the basics you need to get started with Python code. By the end, you'll be able to read and write enough code to build a simple graphical adventure game:
 
-![Python Game](/00_intro/img/PythonRogue.gif)
+![Python Game](./img/PythonRogue.gif)
 
 ## Is this series for you?
 
