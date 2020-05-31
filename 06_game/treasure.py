@@ -7,8 +7,7 @@ class Treasure(GameObject):
         self.type = "TREASURE"
         self.game.treasures.append(self)
 
-        # This is how much gold the player gets upon collecting
-        # the treasure.
+        # How much gold the player gets upon collecting
         self.value = 100
 
     def die(self):

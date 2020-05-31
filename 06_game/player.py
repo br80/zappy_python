@@ -27,13 +27,18 @@ class Player(GameObject):
 
     def process_command(self, c):
         directions = {"w": "north", "a": "west", "s": "south", "d": "east"}
+        # Check if `c` is a valid directional input
         if c in directions:
+            # Move and update the direction player is facing
             self.move(directions[c])
             self.facing = directions[c]
+
         elif c == "p":  # 'p' to attack
             self.attack()
 
     def object_collision(self, collision_object):
+        # Player dies upon collision with any objects besides
+        # treasure
         if collision_object.type == "TREASURE":
             self.gold += collision_object.value
             collision_object.die()
@@ -47,9 +52,14 @@ class Player(GameObject):
         self.game.game_over()
 
     def attack(self):
+        # Spawn a weapon in the direction player is facing
         w = Weapon("WEAPON", self.row, self.col, self.facing, self.attack_speed, self.weapon_size, self.game)
-        self.cooldown = self.attack_speed+1  # One frame longer than weapon
 
+        # Cooldown lasts one frame longer than weapon.
+        # This prevents player from walking into their weapon and dying.
+        self.cooldown = self.attack_speed + 1
+
+    # Get gold upon collecting treasure
     def collect_treasure(self, item):
         if item.type == "TREASURE":
             self.gold += item.value
