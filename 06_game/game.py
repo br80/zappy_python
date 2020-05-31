@@ -34,7 +34,7 @@ class Game:
         # Determines which graphics are printed.
         # Defaults to "ascii", or text
         # Change to "emoji" for icons if your OS supports it.
-        self.graphics = Graphics("emoji", self)
+        self.graphics = Graphics("ascii", self)
 
         # This icon will frame the edges of the map.
         self.border_icon = self.graphics.get_border_icon()
