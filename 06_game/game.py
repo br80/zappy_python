@@ -22,30 +22,50 @@ class Game:
     def __init__(self):
         # Init grid
 
-        self.framerate = 60
-        self.frame = 0
+        # The game will run as long as this is True
         self.running = True
+        # When the game is over, show "win" screen if this is True
+        self.win = False
 
+        # How often should we check for updates?
+        self.framerate = 60  # frames per second
+        self.frame = 0  # Start on frame 0
+
+        # Determines which graphics are printed.
+        # Defaults to "ascii", or text
+        # Change to "emoji" for icons if your OS supports it.
         self.graphics = Graphics("ascii", self)
+
+        # This icon will frame the edges of the map.
         self.border_icon = self.graphics.get_border_icon()
 
-        self.show_debug = False
+        # When the player uses their weapon, there is a short
+        # cooldown before they can act again.
+        self.cooldown = 0
+
+        # These contain every weapon, enemy and treasure object in the game
+        self.weapons = []
+        self.enemies = []
+        self.treasures = []
+
+        # At the end of every frame, the display will check this flag
+        # and print if this is True.
+        # It is reset to False at the end of every frame.
+        self.print_this_frame = True
+
+        # Load the map from this path
+        self.load_world("data/maze_map.csv")
+
+        self.show_help = True  # Turn this on to display help messages
+
+        # Debug Messages
+        self.show_debug = False  # Turn this on to display debug messages
         self.debug_prints = 0
         self.debug_fps = 0
         self.debug_last_frame_second = 0
         self.frame_at_last_second = 0
 
-        self.cooldown = 0
-        self.weapons = []
-        self.enemies = []
-        self.treasures = []
-
-        self.print_this_frame = True
-
-        self.win = False
-
-        self.load_world("data/" + "maze_map.csv")
-
+    # Load the world from CSV
     def load_world(self, world_file=None):
         if world_file is None:
             self.load_default_world()
@@ -58,13 +78,20 @@ class Game:
                 for row in file_reader:
                     if self.cols is None:
                         self.cols = len(row)
-                    self.grid.append(["  "] * self.num_cols)
+                    self.grid.append(["  "] * self.cols)
                     col_i = 0
                     for col in row:
                         self.create(col, self.rows, col_i)
                         col_i += 1
                     self.rows += 1
 
+    # Create objects with the given keys:
+    #
+    # G: Goblin
+    # S: Snake
+    # #: Barrier
+    # P: Player
+    # T: Treasure
     def create(self, key, row, col):
         if key == "G":
             Goblin(row, col, self)
@@ -77,57 +104,40 @@ class Game:
         elif key == "T":
             Treasure(row, col, self)
 
-
-    def load_default_world(self):
-        self.rows = 20
-        self.cols = 20
-        self.grid = []
-        for i in range(self.rows):
-            self.grid.append(["  "] * self.cols)
-
-        Player("Br80", 0, 0, self)
-
-        Goblin(5, 0, self)
-        Goblin(5, 1, self)
-        Goblin(7, 0, self)
-        Snake(6, 0, self)
-        Snake(6, 1, self)
-
-        Treasure(7, 1, self)
-
-        Barrier(4, 2, self)
-        Barrier(5, 2, self)
-        Barrier(6, 2, self)
-        Barrier(7, 2, self)
-        Barrier(8, 2, self)
-        Barrier(9, 2, self)
-
-        Barrier(0, 3, self)
-
+    # Any object can call this function.
+    # When print_this_frame is True,
+    # the display will print at the end of the frame,
+    # then reset print_this_frame back to False
     def draw_screen(self):
         self.print_this_frame = True
 
     def print_screen(self):
+
+        # Clear the previous display from the screen
         clear_screen()
+
+        # Print a blank line
         print("")
+        # Fill the top border with barriers
         print(self.border_icon * (self.cols + 2))
         for row in self.grid:
             char_row = [str(c) for c in row]
             print(f"{self.border_icon}{''.join(char_row)}{self.border_icon}")
+        # Fill the bottom border with barriers
         print(self.border_icon * (self.cols + 2))
+        # Print a blank line
         print("")
+        # Show Player Gold
         print(f"Gold: {self.player.gold}")
 
+        if self.show_help:
+            print("")
+            print("Type `w`, `a`, `s`, `d` to move.")
+            print("Type `p` to attack.")
+            print("Type `q` to quit.")
+
         if self.show_debug:
-            print(self.player.cooldown)
-            self.debug_prints += 1
-            print(f"{self.debug_prints} prints")
-            if time.time() - self.debug_last_frame_second > 1:
-                self.debug_last_frame_second = time.time()
-                self.debug_fps = self.frame // self.debug_last_frame_second
-                self.debug_fps = self.frame - self.frame_at_last_second
-                self.frame_at_last_second = self.frame
-            print(f"FPS: {self.debug_fps}")
+            self.print_debug()
 
     def game_over(self):
         self.running = False
@@ -136,59 +146,85 @@ class Game:
         self.win = True
         self.game_over()
 
+    def print_debug(self):
+        # Turn self.show_debug to True to view these messages
+        print(f"Cooldown: {self.player.cooldown}")
+        self.debug_prints += 1
+        print(f"{self.debug_prints} prints")
+        if time.time() - self.debug_last_frame_second > 1:
+            self.debug_last_frame_second = time.time()
+            self.debug_fps = self.frame // self.debug_last_frame_second
+            self.debug_fps = self.frame - self.frame_at_last_second
+            self.frame_at_last_second = self.frame
+        print(f"FPS: {self.debug_fps}")
 
     def run(self):
-        frame = 0
-        t = time.time()
+        # This is how many seconds each frame should take.
+        # E.g. framerate of 10 frames per second is 1/10 sec per frame
         frame_time = 1 / self.framerate
 
+        # Initialize keyboard reader
         kb = kbhit.KBHit()
 
-        game_start = time.time()
-
+        # Run this loop each frame
         while self.running:
-
-            self.frame += 1
+            # Mark the time at the start of the frame
             start_time = time.time()
+            self.frame += 1
+
+            # Tick down cooldown by 1 each frame
             if self.player.cooldown > 0:
                 self.player.cooldown -= 1
+
             if kb.kbhit():
                 c = kb.getch()
-                if ord(c) == 27: # ESC
-                    break
+                if c == 'q':  # 'q' to quit
+                    self.game_over()
+
+                # Only process inputs if cooldown is inactive
                 if self.player.cooldown <= 0:
                     self.player.process_command(c)
 
+            # Check each enemy to see if it's ready to act this frame
             for enemy in self.enemies:
                 enemy.act(self.frame)
+
+            # Check each weapon to see if it's ready to act this frame
             for weapon in self.weapons:
                 weapon.act(self.frame)
 
             # Print is expensive.
             # Only print if there have been
-            # visual updates.
+            # visual updates this frame
             if self.print_this_frame:
                 self.print_screen()
                 self.print_this_frame = False
 
+            # Subtract current time from the time the frame started
+            #    (time.time() - start_time)
+            # This will give you how long the frame has taken so far.
+            #
+            # If it's less than our target frame time, put the display
+            # to sleep for that many seconds.
             wait_time = max([0, frame_time - (time.time() - start_time)])
             time.sleep(wait_time)
 
-        self.print_screen()
 
+        # We get here after the game stops running.
+        # Print the final map and an appropriate game over messge.
+        self.print_screen()
         if self.win:
             print("You win!")
             print("You are an awesome treasure hunter!")
         else:
+            print("You are dead!")
             print("Game Over")
 
+        # This will set the terminal back to normal.
         kb.set_normal_term()
 
 
 
 
 g = Game()
-g.draw_screen()
 g.run()
-
-

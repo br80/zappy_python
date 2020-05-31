@@ -57,7 +57,7 @@ class Display:
             if kb.kbhit():
                 c = kb.getch()
                 if c == "q":  # Hit `q` to break out of the loop
-                    break
+                    self.running = False
                 self.process_command(c)
 
                 self.print_screen()

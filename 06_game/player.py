@@ -19,7 +19,7 @@ class Player(GameObject):
         if c in directions:
             self.move(directions[c])
             self.facing = directions[c]
-        elif c == "\n":  # Enter/Newline key
+        elif c == "p":  # 'p' to attack
             self.attack()
 
     def object_collision(self, collision_object):

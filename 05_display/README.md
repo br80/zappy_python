@@ -238,11 +238,13 @@ last_c = "NONE"
 
 clear_screen()
 
-while True:
+running = True
+
+while running:
     if kb.kbhit():
         c = kb.getch()
-        if c == "q":  # Hit `q` to break out of the loop
-            break
+        if c == "q":  # Hit `q` to stop the loop
+            running = False
         last_c = c
     clear_screen()
     print(last_c)
@@ -253,11 +255,11 @@ Check out this code in `test.py` which will clear the screen and print out the l
 You may notice some flickering because the screen is being cleared and printed so frequently. You can fix this by printing only when there is an update by indenting `clear_screen()` and `print(last_c)` into the `if` block.
 
 ```python
-while True:
+while running:
     if kb.kbhit():
         c = kb.getch()
-        if c == "q":  # Hit `q` to break out of the loop
-            break
+        if c == "q":  # Hit `q` to stop the loop
+            running = False
         last_c = c
         clear_screen()
         print(last_c)
