@@ -24,11 +24,11 @@ class GameObject():
         grid[row][col] = "  "
         if direction == "north" and row > 0:
             row -= 1
-        elif direction == "south" and row < self.game.num_rows - 1:
+        elif direction == "south" and row < self.game.rows - 1:
             row += 1
         elif direction == "west" and col > 0:
             col -= 1
-        elif direction == "east" and col < self.game.num_cols - 1:
+        elif direction == "east" and col < self.game.cols - 1:
             col += 1
         # If the collision is valid (True), update position
         moved = self.handle_collision(grid[row][col])

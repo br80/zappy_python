@@ -30,11 +30,11 @@ class Weapon(GameObject):
         self.col = player_col
         if facing == "north" and player_row > 0:
             self.row -= 1
-        elif facing == "south" and player_row < self.game.num_rows - 1:
+        elif facing == "south" and player_row < self.game.rows - 1:
             self.row += 1
         elif facing == "west" and player_col > 0:
             self.col -= 1
-        elif facing == "east" and player_col < self.game.num_cols - 1:
+        elif facing == "east" and player_col < self.game.cols - 1:
             self.col += 1
         else:
             return False

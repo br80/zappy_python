@@ -51,19 +51,19 @@ class Game:
             self.load_default_world()
         else:
             with open(world_file, newline='') as csv_file:
-                self.num_rows = 0
-                self.num_cols = None
+                self.rows = 0
+                self.cols = None
                 self.grid = []
                 file_reader = csv.reader(csv_file)
                 for row in file_reader:
-                    if self.num_cols is None:
-                        self.num_cols = len(row)
+                    if self.cols is None:
+                        self.cols = len(row)
                     self.grid.append(["  "] * self.num_cols)
                     col_i = 0
                     for col in row:
-                        self.create(col, self.num_rows, col_i)
+                        self.create(col, self.rows, col_i)
                         col_i += 1
-                    self.num_rows += 1
+                    self.rows += 1
 
     def create(self, key, row, col):
         if key == "G":
@@ -79,11 +79,11 @@ class Game:
 
 
     def load_default_world(self):
-        self.num_rows = 20
-        self.num_cols = 20
+        self.rows = 20
+        self.cols = 20
         self.grid = []
-        for i in range(self.num_rows):
-            self.grid.append(["  "] * self.num_cols)
+        for i in range(self.rows):
+            self.grid.append(["  "] * self.cols)
 
         Player("Br80", 0, 0, self)
 
@@ -110,11 +110,11 @@ class Game:
     def print_screen(self):
         clear_screen()
         print("")
-        print(self.border_icon * (self.num_cols + 2))
+        print(self.border_icon * (self.cols + 2))
         for row in self.grid:
             char_row = [str(c) for c in row]
             print(f"{self.border_icon}{''.join(char_row)}{self.border_icon}")
-        print(self.border_icon * (self.num_cols + 2))
+        print(self.border_icon * (self.cols + 2))
         print("")
         print(f"Gold: {self.player.gold}")
 
