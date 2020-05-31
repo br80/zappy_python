@@ -88,8 +88,8 @@ for row in nums:
 You can create large lists using the multiplication (`*`) operator.
 
 ```python
-['x'] * 10  # Creates a list with 10 x's
-# ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
+['.'] * 10  # Creates a list with 10 .'s
+# ['.', '.', '.', '.', '.', '.', '.', '.', '.', '.']
 ```
 
 You can use this to create a 2D grid.
@@ -101,13 +101,13 @@ cols = 10
 # Create a grid with 5 rows and 10 columns
 grid = []
 for i in range(rows):
-    grid.append(['x'] * cols)
+    grid.append(['.'] * cols)
 
-# [['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
-#  ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
-#  ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
-#  ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
-#  ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']]
+# [['.', '.', '.', '.', '.', '.', '.', '.', '.', '.']
+#  ['.', '.', '.', '.', '.', '.', '.', '.', '.', '.']
+#  ['.', '.', '.', '.', '.', '.', '.', '.', '.', '.']
+#  ['.', '.', '.', '.', '.', '.', '.', '.', '.', '.']
+#  ['.', '.', '.', '.', '.', '.', '.', '.', '.', '.']]
 
 ```
 
@@ -173,15 +173,15 @@ cols = 10
 
 grid = []
 for i in range(rows):
-    grid.append(['x'] * cols)
+    grid.append(['.'] * cols)
 
 for row in grid:
     print(row)
-# ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
-# ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
-# ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
-# ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
-# ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
+# ['.', '.', '.', '.', '.', '.', '.', '.', '.', '.']
+# ['.', '.', '.', '.', '.', '.', '.', '.', '.', '.']
+# ['.', '.', '.', '.', '.', '.', '.', '.', '.', '.']
+# ['.', '.', '.', '.', '.', '.', '.', '.', '.', '.']
+# ['.', '.', '.', '.', '.', '.', '.', '.', '.', '.']
 ```
 
 We can make it look nicer with `join()`
@@ -189,11 +189,11 @@ We can make it look nicer with `join()`
 ```python
 for row in grid:
     print(" ".join(row))
-# x x x x x x x x x x
-# x x x x x x x x x x
-# x x x x x x x x x x
-# x x x x x x x x x x
-# x x x x x x x x x x
+# . . . . . . . . . .
+# . . . . . . . . . .
+# . . . . . . . . . .
+# . . . . . . . . . .
+# . . . . . . . . . .
 ```
 
 
@@ -209,7 +209,7 @@ def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 ```
 
-'nt' is Python's identifier for Windows OS.
+`'nt'` is Python's identifier for Windows.
 
 
 ## Keyboard input
